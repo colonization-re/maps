@@ -1,6 +1,19 @@
 /* Archive-specific composition on top of @colonization-re/web-ui.
  * Candidates for the shared design system are documented in WEB_UI_GAPS.md. */
 
+body.archive-background{
+  min-height:100vh;
+  min-height:100svh;
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(180deg,rgba(242,246,252,.38),rgba(242,246,252,.72) 46%,rgba(242,246,252,.84)),
+    url("ship-leaving-europe.png");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
 .archive-skip-link{
   position:fixed;
   left:16px;
@@ -14,17 +27,24 @@
 }
 .archive-skip-link:focus{transform:translateY(0)}
 
-.archive-hero{padding:0}
-.archive-hero > *{max-width:none}
-.archive-hero-image{
-  display:block;
-  width:100%;
-  aspect-ratio:3 / 1;
-  object-fit:cover;
-  border-bottom:1px solid var(--border-strong);
+.archive-intro{
+  max-width:760px;
+  padding:clamp(38px,8vh,88px) 0 clamp(28px,5vh,52px);
+  text-shadow:0 1px 0 rgba(255,255,255,.8),0 2px 18px rgba(255,255,255,.8);
 }
-.archive-hero-content{padding:clamp(26px,4vw,44px)}
-.archive-hero-content > *{max-width:64ch}
+.archive-intro .col-lead{max-width:62ch}
+.archive-intro .col-btn{text-shadow:none}
+
+.archive-background .col-card{
+  background:color-mix(in srgb,var(--surface) 94%,transparent);
+  box-shadow:0 12px 30px -24px rgba(13,28,46,.5);
+}
+.archive-background .archive-map-preview{
+  background:color-mix(in srgb,var(--surface-2) 94%,transparent);
+}
+.archive-background .archive-map-preview:hover{
+  background:color-mix(in srgb,var(--surface-3) 96%,transparent);
+}
 
 .archive-search-panel{margin-bottom:24px}
 .archive-search-field{flex:1 1 320px;margin:0;max-width:640px}
@@ -74,11 +94,32 @@
 
 @media (max-width:760px){
   .archive-nav{order:3;width:100%}
+  .archive-intro{padding-top:36px}
   .archive-map-preview{min-height:180px}
 }
 
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme=light]) body.archive-background{
+    background-image:
+      linear-gradient(180deg,rgba(6,20,38,.54),rgba(6,20,38,.78) 46%,rgba(6,20,38,.88)),
+      url("ship-leaving-europe.png");
+  }
+  :root:not([data-theme=light]) .archive-intro{
+    text-shadow:0 1px 18px rgba(0,0,0,.9);
+  }
+}
+
+:root[data-theme=dark] body.archive-background{
+  background-image:
+    linear-gradient(180deg,rgba(6,20,38,.54),rgba(6,20,38,.78) 46%,rgba(6,20,38,.88)),
+    url("ship-leaving-europe.png");
+}
+:root[data-theme=dark] .archive-intro{text-shadow:0 1px 18px rgba(0,0,0,.9)}
+
 @media print{
-  .archive-skip-link,.archive-hero-image,
+  body.archive-background{background:#fff}
+  .archive-skip-link,
   .archive-search-panel,.archive-map-actions{display:none}
+  .archive-intro{padding:24px 0;text-shadow:none}
   .archive-map-card{break-inside:avoid}
 }
