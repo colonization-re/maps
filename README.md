@@ -1,3 +1,5 @@
+[View the deployed map archive](https://colonization-re.github.io/maps/)
+
 # Sid Meier's Colonization Map Archive
 
 A community-maintained archive of custom maps for the original **Sid Meier's

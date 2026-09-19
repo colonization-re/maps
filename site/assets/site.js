@@ -1,40 +1,4 @@
 (() => {
-  const root = document.documentElement;
-  const themeButtons = [...document.querySelectorAll("[data-theme-choice]")];
-
-  function storedTheme() {
-    try {
-      const value = localStorage.getItem("colonization-map-theme");
-      return ["light", "dark", "auto"].includes(value) ? value : "auto";
-    } catch {
-      return "auto";
-    }
-  }
-
-  function applyTheme(theme, persist = true) {
-    if (theme === "auto") delete root.dataset.theme;
-    else root.dataset.theme = theme;
-
-    for (const button of themeButtons) {
-      const active = button.dataset.themeChoice === theme;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-selected", String(active));
-    }
-
-    if (persist) {
-      try {
-        localStorage.setItem("colonization-map-theme", theme);
-      } catch {
-        // The theme still works when storage is unavailable.
-      }
-    }
-  }
-
-  for (const button of themeButtons) {
-    button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
-  }
-  applyTheme(storedTheme(), false);
-
   const search = document.querySelector("[data-map-search]");
   if (!search) return;
 

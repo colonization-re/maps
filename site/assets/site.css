@@ -14,7 +14,17 @@
 }
 .archive-skip-link:focus{transform:translateY(0)}
 
-.archive-theme{margin-left:0}
+.archive-hero{padding:0}
+.archive-hero > *{max-width:none}
+.archive-hero-image{
+  display:block;
+  width:100%;
+  aspect-ratio:3 / 1;
+  object-fit:cover;
+  border-bottom:1px solid var(--border-strong);
+}
+.archive-hero-content{padding:clamp(26px,4vw,44px)}
+.archive-hero-content > *{max-width:64ch}
 
 .archive-search-panel{margin-bottom:24px}
 .archive-search-field{flex:1 1 320px;margin:0;max-width:640px}
@@ -64,11 +74,11 @@
 
 @media (max-width:760px){
   .archive-nav{order:3;width:100%}
-  .archive-theme{margin-left:auto}
   .archive-map-preview{min-height:180px}
 }
 
 @media print{
-  .archive-skip-link,.archive-theme,.archive-search-panel,.archive-map-actions{display:none}
+  .archive-skip-link,.archive-hero-image,
+  .archive-search-panel,.archive-map-actions{display:none}
   .archive-map-card{break-inside:avoid}
 }

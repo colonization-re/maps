@@ -197,13 +197,8 @@ def build(output: Path, local_css: Path | None = None) -> None:
         raise ValueError("site/WEB_UI_VERSION must contain a tag such as v1.1.0")
     stylesheet = web_ui_css(web_ui_version, local_css)
 
-    authors = {entry["author"] for entry in entries if entry["author"] != "Unknown"}
-    tags = {tag for entry in entries for tag in entry["tags"]}
     replacements = {
         "{{WEB_UI_VERSION}}": escaped(web_ui_version),
-        "{{MAP_COUNT}}": str(len(entries)),
-        "{{AUTHOR_COUNT}}": str(len(authors)),
-        "{{TAG_COUNT}}": str(len(tags)),
         "{{CATALOG_VERSION}}": escaped(catalog["catalog_version"]),
         "{{CATALOG_CONTENT}}": catalog_content(entries),
     }
@@ -218,6 +213,10 @@ def build(output: Path, local_css: Path | None = None) -> None:
     (output / "assets").mkdir()
     shutil.copy2(SITE_DIR / "assets" / "site.css", output / "assets" / "site.css")
     shutil.copy2(SITE_DIR / "assets" / "site.js", output / "assets" / "site.js")
+    shutil.copy2(
+        SITE_DIR / "assets" / "ship-leaving-europe.png",
+        output / "assets" / "ship-leaving-europe.png",
+    )
     (output / "assets" / "col.min.css").write_bytes(stylesheet)
     (output / "index.html").write_text(page, encoding="utf-8")
     (output / ".nojekyll").touch()

@@ -24,30 +24,23 @@
         <a class="col-btn col-btn--quiet col-btn--sm" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Contribute</a>
         <a class="col-btn col-btn--quiet col-btn--sm" href="https://github.com/colonization-re/maps">GitHub</a>
       </nav>
-      <div class="col-segmented archive-theme" aria-label="Color theme">
-        <button type="button" data-theme-choice="light" aria-selected="false">Light</button>
-        <button type="button" data-theme-choice="dark" aria-selected="false">Dark</button>
-        <button type="button" data-theme-choice="auto" aria-selected="true" class="is-active">Auto</button>
-      </div>
     </div>
   </header>
 
   <main class="col-wrap col-wrap--wide" id="catalog">
-    <section class="col-plate" aria-labelledby="archive-title">
-      <p class="col-eyebrow">Community preservation project</p>
-      <h1 id="archive-title">Sid Meier's Colonization Map Archive</h1>
-      <p class="col-lead">Download community-created worlds for the original
-        Colonization, and help preserve maps from websites that have disappeared.</p>
-      <div class="col-btnrow">
-        <a class="col-btn" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Submit a map</a>
-        <a class="col-btn col-btn--outline" href="maps.json">Use the catalog API</a>
+    <section class="col-plate archive-hero" aria-labelledby="archive-title">
+      <img class="archive-hero-image" src="assets/ship-leaving-europe.png"
+           alt="A sailing ship leaving a European port at sunset">
+      <div class="archive-hero-content">
+        <p class="col-eyebrow">Community preservation project</p>
+        <h1 id="archive-title">Sid Meier's Colonization Map Archive</h1>
+        <p class="col-lead">Download community-created worlds for the original
+          Colonization, and help preserve maps from websites that have disappeared.</p>
+        <div class="col-btnrow">
+          <a class="col-btn" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Submit a map</a>
+          <a class="col-btn col-btn--outline" href="maps.json">Use the catalog API</a>
+        </div>
       </div>
-      <dl class="col-plate-meta">
-        <div><dt>Maps preserved</dt><dd>{{MAP_COUNT}}</dd></div>
-        <div><dt>Known authors</dt><dd>{{AUTHOR_COUNT}}</dd></div>
-        <div><dt>Tags indexed</dt><dd>{{TAG_COUNT}}</dd></div>
-        <div><dt>UI release</dt><dd>{{WEB_UI_VERSION}}</dd></div>
-      </dl>
     </section>
 
     {{CATALOG_CONTENT}}
