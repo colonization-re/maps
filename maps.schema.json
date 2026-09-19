@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/colonization-re/maps/blob/main/maps.schema.json",
+  "title": "Sid Meier's Colonization map catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["catalog_version", "maps"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "catalog_version": {
+      "const": 1
+    },
+    "maps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/map"
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "pattern": "^maps/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9_-]+\\.(?:zip|png)$"
+    },
+    "map": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "author",
+        "release_date",
+        "size",
+        "tags",
+        "file_link",
+        "preview_link",
+        "full_preview_link"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release_date": {
+          "type": ["string", "null"],
+          "pattern": "^(?!0000)[0-9]{4}(?:-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12][0-9]|3[01]))?)?$"
+        },
+        "size": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "source_link": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "file_link": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "preview_link": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "full_preview_link": {
+          "$ref": "#/$defs/relativePath"
+        }
+      }
+    }
+  }
+}
