@@ -47,6 +47,7 @@ def map_card(entry: dict[str, Any]) -> str:
     )
     width = entry["size"]["width"]
     height = entry["size"]["height"]
+    area = width * height
     tags = "".join(
         f'<span class="col-badge col-badge--brand">{escaped(tag)}</span>'
         for tag in entry["tags"]
@@ -69,7 +70,7 @@ def map_card(entry: dict[str, Any]) -> str:
     preview_link = escaped(entry["preview_link"])
     full_preview_link = escaped(entry["full_preview_link"])
 
-    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-search="{escaped(search_text)}">
+    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-search="{escaped(search_text)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
         <a class="archive-map-preview" href="{full_preview_link}" aria-label="View full-size map image for {name}">
           <img class="col-art" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
         </a>
@@ -112,6 +113,15 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
             <span class="col-label">Search maps</span>
             <input class="col-input" type="search" placeholder="Name, author, or tag" autocomplete="off" data-map-search>
           </label>
+          <label class="col-field archive-sort-field">
+            <span class="col-label">Sort maps</span>
+            <select class="col-input" data-map-sort>
+              <option value="name-asc">A-Z</option>
+              <option value="name-desc">Z-A</option>
+              <option value="date-desc">Release date</option>
+              <option value="size-desc">Map size</option>
+            </select>
+          </label>
           <div class="col-row">
             <p class="col-meta archive-search-status" data-search-status aria-live="polite">{len(entries)} of {len(entries)} {map_word} shown</p>
             <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-clear-search disabled>Clear</button>
@@ -119,7 +129,7 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
         </div>
       </div>
       <p class="col-note col-note--warn" data-no-results hidden>No maps match that search.</p>
-      <div class="col-grid">
+      <div class="col-grid" data-map-grid>
 {cards}
       </div>
     </section>"""

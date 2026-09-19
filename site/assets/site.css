@@ -48,6 +48,7 @@ body.archive-background{
 
 .archive-search-panel{margin-bottom:24px}
 .archive-search-field{flex:1 1 320px;margin:0;max-width:640px}
+.archive-sort-field{flex:0 1 180px;margin:0}
 .archive-search-status{margin:0}
 
 .archive-map-card{
