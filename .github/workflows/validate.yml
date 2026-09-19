@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Validate map catalog and assets
         run: python3 tools/validate_archive.py
+      - name: Build static catalog
+        run: python3 tools/build_site.py

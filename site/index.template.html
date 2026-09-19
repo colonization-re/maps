@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Community archive of custom maps for Sid Meier's Colonization.">
+  <meta name="color-scheme" content="light dark">
+  <title>Sid Meier's Colonization Map Archive</title>
+  <link rel="stylesheet" href="assets/col.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body class="col-ruled">
+  <a class="archive-skip-link" href="#catalog">Skip to map catalog</a>
+
+  <header class="col-bar">
+    <div class="col-bar-in">
+      <a class="col-brand" href="./" aria-label="Colonization Map Archive home">
+        <span class="col-brand-mark" aria-hidden="true"></span>
+        Map Archive
+      </a>
+      <nav class="col-row col-push archive-nav" aria-label="Archive links">
+        <a class="col-btn col-btn--quiet col-btn--sm" href="maps.json">Catalog JSON</a>
+        <a class="col-btn col-btn--quiet col-btn--sm" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Contribute</a>
+        <a class="col-btn col-btn--quiet col-btn--sm" href="https://github.com/colonization-re/maps">GitHub</a>
+      </nav>
+      <div class="col-segmented archive-theme" aria-label="Color theme">
+        <button type="button" data-theme-choice="light" aria-selected="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-selected="false">Dark</button>
+        <button type="button" data-theme-choice="auto" aria-selected="true" class="is-active">Auto</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="col-wrap col-wrap--wide" id="catalog">
+    <section class="col-plate" aria-labelledby="archive-title">
+      <p class="col-eyebrow">Community preservation project</p>
+      <h1 id="archive-title">Sid Meier's Colonization Map Archive</h1>
+      <p class="col-lead">Download community-created worlds for the original
+        Colonization, and help preserve maps from websites that have disappeared.</p>
+      <div class="col-btnrow">
+        <a class="col-btn" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Submit a map</a>
+        <a class="col-btn col-btn--outline" href="maps.json">Use the catalog API</a>
+      </div>
+      <dl class="col-plate-meta">
+        <div><dt>Maps preserved</dt><dd>{{MAP_COUNT}}</dd></div>
+        <div><dt>Known authors</dt><dd>{{AUTHOR_COUNT}}</dd></div>
+        <div><dt>Tags indexed</dt><dd>{{TAG_COUNT}}</dd></div>
+        <div><dt>UI release</dt><dd>{{WEB_UI_VERSION}}</dd></div>
+      </dl>
+    </section>
+
+    {{CATALOG_CONTENT}}
+
+    <footer class="col-foot col-spread">
+      <span>Community archive · metadata catalog version {{CATALOG_VERSION}}</span>
+      <span>Powered by <a href="https://github.com/colonization-re/web-ui/releases/tag/{{WEB_UI_VERSION}}">web-ui {{WEB_UI_VERSION}}</a></span>
+    </footer>
+  </main>
+</body>
+</html>

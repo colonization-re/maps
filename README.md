@@ -70,6 +70,33 @@ The same validation runs automatically on pushes and pull requests. It checks
 catalog structure, naming, broken links, PNG and ZIP signatures, unsafe ZIP
 paths, duplicate IDs, and unlisted map folders.
 
+## Website
+
+GitHub Pages is rebuilt from `maps.json` on every push to `main`. Build it
+locally with:
+
+```sh
+python3 tools/build_site.py
+python3 -m http.server --directory _site 8000
+```
+
+The generated site is written to `_site/` and is not committed. It contains
+the catalog, map downloads, previews, and a searchable static index. The build
+downloads `col.min.css` and its checksum manifest from the pinned web-ui
+release, verifies the stylesheet, and includes it in the Pages artifact so it
+is served with the correct CSS media type. For an offline build, pass an
+existing release asset with `--web-ui-css path/to/col.min.css`.
+
+The site uses the pinned `@colonization-re/web-ui` release named in
+[`site/WEB_UI_VERSION`](site/WEB_UI_VERSION). To upgrade the design system,
+change that one line and rebuild. Archive-specific CSS lives in
+[`site/assets/site.css`](site/assets/site.css). Reusable components that are
+still missing from the shared design system are described in
+[`site/WEB_UI_GAPS.md`](site/WEB_UI_GAPS.md).
+
+Before the first deployment, make sure the repository's **Settings → Pages →
+Build and deployment → Source** is set to **GitHub Actions**.
+
 ## Preservation and rights
 
 Please preserve provenance: link to the original page or a Wayback Machine
