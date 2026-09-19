@@ -1,5 +1,90 @@
 {
   "$schema": "./maps.schema.json",
   "catalog_version": 1,
-  "maps": []
+  "maps": [
+    {
+      "id": "assorted-flat",
+      "name": "Flat",
+      "author": "Florian Heise",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/assorted-flat/assorted-flat.zip",
+      "preview_link": "maps/assorted-flat/assorted-flat_preview.png",
+      "full_preview_link": "maps/assorted-flat/assorted-flat_full.png"
+    },
+    {
+      "id": "assorted-islands",
+      "name": "Islands",
+      "author": "Florian Heise",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/assorted-islands/assorted-islands.zip",
+      "preview_link": "maps/assorted-islands/assorted-islands_preview.png",
+      "full_preview_link": "maps/assorted-islands/assorted-islands_full.png"
+    },
+    {
+      "id": "assorted-oasis",
+      "name": "Oasis",
+      "author": "Florian Heise",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/assorted-oasis/assorted-oasis.zip",
+      "preview_link": "maps/assorted-oasis/assorted-oasis_preview.png",
+      "full_preview_link": "maps/assorted-oasis/assorted-oasis_full.png"
+    },
+    {
+      "id": "assorted-southstr",
+      "name": "Southstr",
+      "author": "Florian Heise",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/assorted-southstr/assorted-southstr.zip",
+      "preview_link": "maps/assorted-southstr/assorted-southstr_preview.png",
+      "full_preview_link": "maps/assorted-southstr/assorted-southstr_full.png"
+    },
+    {
+      "id": "jdd003",
+      "name": "From Pole to Pole",
+      "author": "John D Dilley.",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/jdd003/jdd003.zip",
+      "preview_link": "maps/jdd003/jdd003_preview.png",
+      "full_preview_link": "maps/jdd003/jdd003_full.png"
+    },
+    {
+      "id": "orig13",
+      "name": "Eastern North America",
+      "author": "Patrick Minton",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/orig13/orig13.zip",
+      "preview_link": "maps/orig13/orig13_preview.png",
+      "full_preview_link": "maps/orig13/orig13_full.png"
+    }
+  ]
 }
