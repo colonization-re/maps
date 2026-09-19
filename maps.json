@@ -1,6 +1,6 @@
 {
   "$schema": "./maps.schema.json",
-  "catalog_version": 1,
+  "catalog_version": 2,
   "maps": [
     {
       "id": "assorted-flat",
@@ -13,7 +13,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133541if_/http://apolyton.net/local_links/jump/c-maps-340/4824",
-      "file_link": "maps/assorted-flat/assorted-flat.zip",
+      "file_link": "maps/assorted-flat/assorted-flat.mp",
       "preview_link": "maps/assorted-flat/assorted-flat_preview.png",
       "full_preview_link": "maps/assorted-flat/assorted-flat_full.png"
     },
@@ -28,7 +28,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133541if_/http://apolyton.net/local_links/jump/c-maps-340/4824",
-      "file_link": "maps/assorted-islands/assorted-islands.zip",
+      "file_link": "maps/assorted-islands/assorted-islands.mp",
       "preview_link": "maps/assorted-islands/assorted-islands_preview.png",
       "full_preview_link": "maps/assorted-islands/assorted-islands_full.png"
     },
@@ -43,7 +43,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133541if_/http://apolyton.net/local_links/jump/c-maps-340/4824",
-      "file_link": "maps/assorted-oasis/assorted-oasis.zip",
+      "file_link": "maps/assorted-oasis/assorted-oasis.mp",
       "preview_link": "maps/assorted-oasis/assorted-oasis_preview.png",
       "full_preview_link": "maps/assorted-oasis/assorted-oasis_full.png"
     },
@@ -58,7 +58,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133541if_/http://apolyton.net/local_links/jump/c-maps-340/4824",
-      "file_link": "maps/assorted-southstr/assorted-southstr.zip",
+      "file_link": "maps/assorted-southstr/assorted-southstr.mp",
       "preview_link": "maps/assorted-southstr/assorted-southstr_preview.png",
       "full_preview_link": "maps/assorted-southstr/assorted-southstr_full.png"
     },
@@ -73,7 +73,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133542if_/http://apolyton.net/local_links/jump/c-maps-340/4825",
-      "file_link": "maps/assorted2-a-map/assorted2-a-map.zip",
+      "file_link": "maps/assorted2-a-map/assorted2-a-map.mp",
       "preview_link": "maps/assorted2-a-map/assorted2-a-map_preview.png",
       "full_preview_link": "maps/assorted2-a-map/assorted2-a-map_full.png"
     },
@@ -88,7 +88,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133542if_/http://apolyton.net/local_links/jump/c-maps-340/4825",
-      "file_link": "maps/assorted2-asia-pac/assorted2-asia-pac.zip",
+      "file_link": "maps/assorted2-asia-pac/assorted2-asia-pac.mp",
       "preview_link": "maps/assorted2-asia-pac/assorted2-asia-pac_preview.png",
       "full_preview_link": "maps/assorted2-asia-pac/assorted2-asia-pac_full.png"
     },
@@ -103,7 +103,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133542if_/http://apolyton.net/local_links/jump/c-maps-340/4825",
-      "file_link": "maps/assorted2-europe/assorted2-europe.zip",
+      "file_link": "maps/assorted2-europe/assorted2-europe.mp",
       "preview_link": "maps/assorted2-europe/assorted2-europe_preview.png",
       "full_preview_link": "maps/assorted2-europe/assorted2-europe_full.png"
     },
@@ -118,7 +118,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133539if_/http://apolyton.net/local_links/jump/c-maps-340/4826",
-      "file_link": "maps/jdd003/jdd003.zip",
+      "file_link": "maps/jdd003/jdd003.mp",
       "preview_link": "maps/jdd003/jdd003_preview.png",
       "full_preview_link": "maps/jdd003/jdd003_full.png"
     },
@@ -133,7 +133,7 @@
       },
       "tags": [],
       "source_link": "https://web.archive.org/web/20140907133542if_/http://apolyton.net/local_links/jump/c-maps-340/4827",
-      "file_link": "maps/orig13/orig13.zip",
+      "file_link": "maps/orig13/orig13.mp",
       "preview_link": "maps/orig13/orig13_preview.png",
       "full_preview_link": "maps/orig13/orig13_full.png"
     }

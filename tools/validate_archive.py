@@ -5,10 +5,8 @@ from __future__ import annotations
 
 import json
 import re
-import stat
 import struct
 import sys
-import zipfile
 from datetime import date
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -21,8 +19,6 @@ MAPS_DIR = ROOT / "maps"
 MAX_FILE_SIZE = 100 * 1024 * 1024
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_PATTERN = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
-WINDOWS_ABSOLUTE_PATTERN = re.compile(r"^[a-zA-Z]:[/\\]")
-EXECUTABLE_SUFFIXES = {".bat", ".cmd", ".com", ".dll", ".exe", ".msi", ".scr"}
 ALLOWED_FIELDS = {
     "id",
     "name",
@@ -62,8 +58,8 @@ class Validator:
         unknown = set(data) - allowed
         if unknown:
             self.error("maps.json", f"unknown fields: {', '.join(sorted(unknown))}")
-        if data.get("catalog_version") != 1:
-            self.error("maps.json.catalog_version", "must be 1")
+        if data.get("catalog_version") != 2:
+            self.error("maps.json.catalog_version", "must be 2")
         if not isinstance(data.get("maps"), list):
             self.error("maps.json.maps", "must be an array")
             return None
@@ -138,7 +134,7 @@ class Validator:
                     self.error(f"{location}.source_link", "must be an HTTP(S) URL")
 
         expected_paths = {
-            "file_link": f"maps/{map_id}/{map_id}.zip",
+            "file_link": f"maps/{map_id}/{map_id}.mp",
             "preview_link": f"maps/{map_id}/{map_id}_preview.png",
             "full_preview_link": f"maps/{map_id}/{map_id}_full.png",
         }
@@ -148,7 +144,8 @@ class Validator:
             if value != expected:
                 self.error(field_location, f"must be {expected!r}")
                 continue
-            self.validate_asset(value, field_location)
+            expected_size = entry.get("size") if field == "file_link" else None
+            self.validate_asset(value, field_location, expected_size)
 
         map_dir = MAPS_DIR / map_id
         if map_dir.is_dir():
@@ -206,7 +203,9 @@ class Validator:
         if all_tags_are_strings and value != sorted(value):
             self.error(location, "must be sorted alphabetically")
 
-    def validate_asset(self, relative: str, location: str) -> None:
+    def validate_asset(
+        self, relative: str, location: str, expected_size: object = None
+    ) -> None:
         path = ROOT / relative
         if not path.is_file():
             self.error(location, f"file does not exist: {relative}")
@@ -218,8 +217,8 @@ class Validator:
             self.error(location, "file exceeds GitHub's 100 MiB limit")
         if path.suffix == ".png":
             self.validate_png(path, location)
-        elif path.suffix == ".zip":
-            self.validate_zip(path, location)
+        elif path.suffix == ".mp":
+            self.validate_mp(path, location, expected_size)
 
     def validate_png(self, path: Path, location: str) -> None:
         try:
@@ -233,40 +232,28 @@ class Validator:
         except OSError as exc:
             self.error(location, str(exc))
 
-    def validate_zip(self, path: Path, location: str) -> None:
-        if not zipfile.is_zipfile(path):
-            self.error(location, "is not a valid ZIP file")
-            return
+    def validate_mp(self, path: Path, location: str, expected_size: object) -> None:
         try:
-            with zipfile.ZipFile(path) as archive:
-                members = archive.infolist()
-                if not members:
-                    self.error(location, "ZIP file is empty")
-                folded_names: set[str] = set()
-                for member in members:
-                    normalized_name = member.filename.replace("\\", "/")
-                    member_path = PurePosixPath(normalized_name)
-                    if (
-                        member_path.is_absolute()
-                        or WINDOWS_ABSOLUTE_PATTERN.match(member.filename)
-                        or ".." in member_path.parts
-                    ):
-                        self.error(location, f"ZIP has unsafe path: {member.filename!r}")
-                    if PurePosixPath(normalized_name).suffix.casefold() in EXECUTABLE_SUFFIXES:
-                        self.error(location, f"ZIP contains an executable: {member.filename!r}")
-                    folded = member.filename.casefold()
-                    if folded in folded_names:
-                        self.error(location, f"ZIP has duplicate path: {member.filename!r}")
-                    folded_names.add(folded)
-                    unix_mode = member.external_attr >> 16
-                    if stat.S_ISLNK(unix_mode):
-                        self.error(location, f"ZIP contains a symbolic link: {member.filename!r}")
-                    if member.flag_bits & 0x1:
-                        self.error(location, f"ZIP contains an encrypted file: {member.filename!r}")
-                corrupt = archive.testzip()
-                if corrupt:
-                    self.error(location, f"ZIP member failed CRC check: {corrupt!r}")
-        except (OSError, RuntimeError, zipfile.BadZipFile) as exc:
+            header = path.read_bytes()[:6]
+            if len(header) < 6:
+                self.error(location, "is too short to be a valid MP file")
+                return
+            width, height, _ = struct.unpack("<HHH", header)
+            if width == 0 or height == 0:
+                self.error(location, "MP dimensions must be non-zero")
+                return
+            if isinstance(expected_size, dict):
+                catalog_dimensions = (
+                    expected_size.get("width"),
+                    expected_size.get("height"),
+                )
+                if catalog_dimensions != (width, height):
+                    self.error(
+                        location,
+                        f"MP dimensions are {width}x{height}, not "
+                        f"{catalog_dimensions[0]}x{catalog_dimensions[1]}",
+                    )
+        except OSError as exc:
             self.error(location, str(exc))
 
 

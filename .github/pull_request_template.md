@@ -11,9 +11,10 @@ delete the fields and checks that do not apply. -->
 ## Checklist
 
 - [ ] The directory and all three filenames use the same lowercase map ID.
-- [ ] The ZIP is the original distribution where available and opens correctly.
+- [ ] The MP file was extracted from the original download without modifying
+      its map data.
 - [ ] Both images are PNG files; one is a compact preview and one is full-size.
 - [ ] I added the entry to `maps.json` in ID order.
 - [ ] I ran `python3 tools/validate_archive.py` successfully.
-- [ ] The source permits redistribution, and the files contain no executables
-      or unrelated content.
+- [ ] The source permits redistribution, and the submission contains no
+      archives, executables, or unrelated content.

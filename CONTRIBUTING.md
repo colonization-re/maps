@@ -10,7 +10,7 @@ Thank you for helping preserve the Colonization mapping community's work.
 3. Create `maps/<id>/` and add exactly these files:
 
    ```text
-   maps/<id>/<id>.zip
+   maps/<id>/<id>.mp
    maps/<id>/<id>_preview.png
    maps/<id>/<id>_full.png
    ```
@@ -22,13 +22,13 @@ Thank you for helping preserve the Colonization mapping community's work.
 
 ## File guidelines
 
-- Preserve the original ZIP downloaded from its source. Do not repackage it
-  merely to rename files inside the archive.
-- Make sure the ZIP opens successfully and contains the map data.
+- Extract the playable `.mp` file from the original download and rename it to
+  match the map ID. Do not modify the map data itself.
+- If a download contains multiple `.mp` files, create a separate map directory
+  and catalog entry for each one.
 - Use PNG for both images. The preview should be a reasonably small version for
   gallery use; the full image should retain the best available resolution.
-- Do not add passwords, executables, unrelated files, or archives containing
-  absolute paths, `..` path traversal, or symbolic links.
+- Do not add archives, executables, or unrelated files.
 - GitHub rejects individual files larger than 100 MiB. If an artifact is that
   large, discuss it in an issue before submitting it.
 
@@ -51,7 +51,6 @@ dates, or provenance in the pull-request description.
 
 ## Updating an existing entry
 
-Avoid replacing an original ZIP with a repackaged copy. If correcting metadata
-or supplying a better image, explain the evidence and origin in the pull
-request. Renaming an ID changes every public asset path and should be reserved
-for genuine mistakes.
+Avoid modifying the original map data. If correcting metadata or supplying a
+better image, explain the evidence and origin in the pull request. Renaming an
+ID changes every public asset path and should be reserved for genuine mistakes.

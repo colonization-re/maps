@@ -6,8 +6,7 @@ A community-maintained archive of custom maps for the original **Sid Meier's
 Colonization**. The project is intended to preserve maps from websites that
 have disappeared and to accept community contributions through pull requests.
 
-The archive does not currently contain any maps. See [CONTRIBUTING.md](CONTRIBUTING.md)
-to add the first one.
+See [CONTRIBUTING.md](CONTRIBUTING.md) to add another map.
 
 ## Archive layout
 
@@ -16,12 +15,13 @@ Each map has a stable, lowercase ID and exactly three files:
 ```text
 maps/
 └── new-world/
-    ├── new-world.zip
+    ├── new-world.mp
     ├── new-world_preview.png
     └── new-world_full.png
 ```
 
-- `*.zip` is the original map download, kept intact whenever possible.
+- `*.mp` is the playable Colonization map, extracted from its original download
+  without modifying the map data.
 - `*_preview.png` is a smaller image suitable for indexes and galleries.
 - `*_full.png` is the full-size map image.
 - [`maps.json`](maps.json) is the machine-readable catalog.
@@ -34,7 +34,7 @@ can be converted to raw GitHub URLs by consumers.
 
 ```json
 {
-  "catalog_version": 1,
+  "catalog_version": 2,
   "maps": [
     {
       "id": "new-world",
@@ -46,8 +46,8 @@ can be converted to raw GitHub URLs by consumers.
         "height": 72
       },
       "tags": ["historical", "large"],
-      "source_link": "https://web.archive.org/web/20010101000000/https://example.com/new-world.zip",
-      "file_link": "maps/new-world/new-world.zip",
+      "source_link": "https://web.archive.org/web/20010101000000/https://example.com/new-world",
+      "file_link": "maps/new-world/new-world.mp",
       "preview_link": "maps/new-world/new-world_preview.png",
       "full_preview_link": "maps/new-world/new-world_full.png"
     }
@@ -55,7 +55,7 @@ can be converted to raw GitHub URLs by consumers.
 }
 ```
 
-`size` is the playable map size in tiles, not the ZIP file size. For preserved
+`size` is the playable map size in tiles, not the MP file size. For preserved
 maps whose exact date is unavailable, `release_date` may be a year (`"1996"`)
 or a year and month (`"1996-08"`). Use `null` only when no reliable date can be
 found. `source_link` is optional, but strongly encouraged for archived maps.
@@ -69,8 +69,8 @@ python3 tools/validate_archive.py
 ```
 
 The same validation runs automatically on pushes and pull requests. It checks
-catalog structure, naming, broken links, PNG and ZIP signatures, unsafe ZIP
-paths, duplicate IDs, and unlisted map folders.
+catalog structure, naming, broken links, MP headers and dimensions, PNG
+signatures, duplicate IDs, and unlisted map folders.
 
 ## Website
 
@@ -102,7 +102,7 @@ Build and deployment → Source** is set to **GitHub Actions**.
 ## Preservation and rights
 
 Please preserve provenance: link to the original page or a Wayback Machine
-snapshot and avoid modifying the original ZIP. Contributors must only submit
-files they are permitted to redistribute. Copyright remains with each map's
-creator; inclusion in this archive does not place a map in the public domain or
-apply a repository-wide license to it.
+snapshot, and do not modify the extracted map data. Contributors must only
+submit files they are permitted to redistribute. Copyright remains with each
+map's creator; inclusion in this archive does not place a map in the public
+domain or apply a repository-wide license to it.

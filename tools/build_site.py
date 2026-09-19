@@ -83,7 +83,7 @@ def map_card(entry: dict[str, Any]) -> str:
           </dl>
           <div class="col-row archive-tags" aria-label="Map tags">{tags}</div>
           <div class="col-btnrow archive-map-actions">
-            <a class="col-btn col-btn--sm" href="{file_link}" download>Download ZIP</a>
+            <a class="col-btn col-btn--sm" href="{file_link}" download>Download map</a>
             <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}">Full image</a>
             {source_action}
           </div>
