@@ -1,8 +1,9 @@
 ## Map submission
 
-<!-- Describe the map and where it was recovered from. For non-map changes,
-delete the fields and checks that do not apply. -->
+<!-- If this PR adds a map from a submission issue, link that issue here.
+For non-map changes, delete the fields and checks that do not apply. -->
 
+- Related submission issue:
 - Map name:
 - Author:
 - Original or archived source:

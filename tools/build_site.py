@@ -99,7 +99,8 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
       <h2 id="empty-title">No maps have been archived yet</h2>
       <p class="col-dim">Have a custom map or a recovered download? Help start the collection.</p>
       <div class="col-btnrow">
-        <a class="col-btn" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Read the submission guide</a>
+        <a class="col-btn" href="https://github.com/colonization-re/maps/issues/new?template=map_submission.yml">Submit a map</a>
+        <a class="col-btn col-btn--outline" href="https://github.com/colonization-re/maps/blob/main/CONTRIBUTING.md">Read the guide</a>
       </div>
     </section>"""
 

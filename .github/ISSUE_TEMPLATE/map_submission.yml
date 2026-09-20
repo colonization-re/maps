@@ -1,0 +1,91 @@
+name: Submit a custom map
+description: Share a custom or recovered Sid Meier's Colonization map for review.
+title: "Map submission: "
+labels:
+  - map submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping preserve Colonization maps. This issue form is the easiest way to submit a map; maintainers can turn accepted submissions into repository changes.
+
+  - type: input
+    id: map-name
+    attributes:
+      label: Map name
+      description: Use the original title if you know it.
+      placeholder: New World
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      description: Enter "Unknown" if the creator cannot be identified.
+      placeholder: Jane Doe
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Map file or download
+      description: Attach the playable .mp file, attach a .zip if supporting scenario files are required, or paste a download link.
+      placeholder: Drag the file here or paste a link.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Original or archived source
+      description: Link the original page, a Wayback Machine snapshot, forum post, readme, or any evidence for where the map came from.
+      placeholder: https://web.archive.org/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Preview images
+      description: Attach screenshots or generated previews if you have them. This is optional, but it helps reviewers.
+    validations:
+      required: false
+
+  - type: input
+    id: size
+    attributes:
+      label: Map size
+      description: Playable width and height in tiles, if known.
+      placeholder: 58 x 72
+    validations:
+      required: false
+
+  - type: input
+    id: release-date
+    attributes:
+      label: Release date
+      description: Use YYYY-MM-DD, YYYY-MM, or YYYY if known.
+      placeholder: "1996"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add tags, context, uncertainty about metadata, or anything maintainers should know.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: permission
+    attributes:
+      label: Redistribution
+      description: Please only submit files that may be redistributed in this archive.
+      options:
+        - label: To the best of my knowledge, these files may be redistributed here.
+          required: true
+        - label: The submission does not include executables, unrelated archives, or unrelated content.
+          required: true

@@ -2,7 +2,30 @@
 
 Thank you for helping preserve the Colonization mapping community's work.
 
-## Add a map
+## Recommended: submit a map with an issue
+
+The easiest way to contribute is to open a
+[map submission issue](https://github.com/colonization-re/maps/issues/new?template=map_submission.yml).
+You do not need to fork the repository, create a branch, or edit
+`maps.json`.
+
+Use the issue form when you have a custom map, a recovered download, or useful
+metadata for an existing map. Please include as much as you can:
+
+- The map name and author.
+- The original source page or a Wayback Machine snapshot, if known.
+- The playable `.mp` file, or a `.zip` if required scenario support files are
+  needed.
+- Preview images, screenshots, or notes that help identify the map.
+- A short note confirming that the files may be redistributed here.
+
+A maintainer will review the issue, ask follow-up questions if needed, and add
+accepted maps to the repository.
+
+## Advanced: submit a pull request
+
+Pull requests are welcome if you are comfortable preparing the repository
+changes yourself.
 
 1. Fork this repository and create a branch.
 2. Choose a stable map ID made from lowercase letters, numbers, and hyphens.
@@ -21,7 +44,9 @@ Thank you for helping preserve the Colonization mapping community's work.
 4. Add one entry to `maps.json`. Keep entries sorted by `id`. All catalog links
    must be relative paths matching the names above.
 5. Run `python3 tools/validate_archive.py` from the repository root.
-6. Open a pull request and complete the checklist in the template.
+6. Open a pull request and complete the checklist in the template. If there is
+   already a submission issue for the map, link it in the pull-request
+   description.
 
 ## File guidelines
 
@@ -53,10 +78,11 @@ Thank you for helping preserve the Colonization mapping community's work.
 
 When recovering a map through the Wayback Machine, prefer a snapshot close to
 the original publication date. Put any useful context about uncertain authors,
-dates, or provenance in the pull-request description.
+dates, or provenance in the issue or pull-request description.
 
 ## Updating an existing entry
 
 Avoid modifying the original map data. If correcting metadata or supplying a
-better image, explain the evidence and origin in the pull request. Renaming an
-ID changes every public asset path and should be reserved for genuine mistakes.
+better image, explain the evidence and origin in an issue or pull request.
+Renaming an ID changes every public asset path and should be reserved for
+genuine mistakes.

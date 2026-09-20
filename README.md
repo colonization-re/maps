@@ -4,9 +4,14 @@
 
 A community-maintained archive of custom maps for the original **Sid Meier's
 Colonization**. The project is intended to preserve maps from websites that
-have disappeared and to accept community contributions through pull requests.
+have disappeared and to accept community contributions.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) to add another map.
+The easiest way to add a map is to open a
+[map submission issue](https://github.com/colonization-re/maps/issues/new?template=map_submission.yml).
+The form collects the map file, source, permission notes, and metadata so a
+maintainer can review it and add it to the archive. If you are comfortable with
+Git, you can also submit the files directly with a pull request; see
+[CONTRIBUTING.md](CONTRIBUTING.md) for both paths.
 
 ## Archive layout
 
