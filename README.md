@@ -10,7 +10,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) to add another map.
 
 ## Archive layout
 
-Each map has a stable, lowercase ID and exactly three files:
+Each map has a stable, lowercase ID and exactly three files. Most maps use a
+direct MP file:
 
 ```text
 maps/
@@ -22,6 +23,8 @@ maps/
 
 - `*.mp` is the playable Colonization map, extracted from its original download
   without modifying the map data.
+- `*.zip` may replace the MP file when the map depends on supporting scenario
+  files. Such a ZIP must contain exactly one playable MP file.
 - `*_preview.png` is a smaller image suitable for indexes and galleries.
 - `*_full.png` is the full-size map image.
 - [`maps.json`](maps.json) is the machine-readable catalog.
@@ -34,7 +37,7 @@ can be converted to raw GitHub URLs by consumers.
 
 ```json
 {
-  "catalog_version": 2,
+  "catalog_version": 3,
   "maps": [
     {
       "id": "new-world",
@@ -55,10 +58,11 @@ can be converted to raw GitHub URLs by consumers.
 }
 ```
 
-`size` is the playable map size in tiles, not the MP file size. For preserved
-maps whose exact date is unavailable, `release_date` may be a year (`"1996"`)
-or a year and month (`"1996-08"`). Use `null` only when no reliable date can be
-found. `source_link` is optional, but strongly encouraged for archived maps.
+`size` is the playable map size in tiles, not the MP or ZIP file size. For
+preserved maps whose exact date is unavailable, `release_date` may be a year
+(`"1996"`) or a year and month (`"1996-08"`). Use `null` only when no reliable
+date can be found. `source_link` is optional, but strongly encouraged for
+archived maps.
 
 ## Validate the archive
 
@@ -70,7 +74,7 @@ python3 tools/validate_archive.py
 
 The same validation runs automatically on pushes and pull requests. It checks
 catalog structure, naming, broken links, MP headers and dimensions, PNG
-signatures, duplicate IDs, and unlisted map folders.
+signatures, ZIP integrity and safety, duplicate IDs, and unlisted map folders.
 
 ## Website
 

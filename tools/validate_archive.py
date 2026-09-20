@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import json
 import re
+import stat
 import struct
 import sys
+import zipfile
 from datetime import date
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -19,6 +21,8 @@ MAPS_DIR = ROOT / "maps"
 MAX_FILE_SIZE = 100 * 1024 * 1024
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_PATTERN = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+WINDOWS_ABSOLUTE_PATTERN = re.compile(r"^[a-zA-Z]:[/\\]")
+EXECUTABLE_SUFFIXES = {".bat", ".cmd", ".com", ".dll", ".exe", ".msi", ".scr"}
 ALLOWED_FIELDS = {
     "id",
     "name",
@@ -58,8 +62,8 @@ class Validator:
         unknown = set(data) - allowed
         if unknown:
             self.error("maps.json", f"unknown fields: {', '.join(sorted(unknown))}")
-        if data.get("catalog_version") != 2:
-            self.error("maps.json.catalog_version", "must be 2")
+        if data.get("catalog_version") != 3:
+            self.error("maps.json.catalog_version", "must be 3")
         if not isinstance(data.get("maps"), list):
             self.error("maps.json.maps", "must be an array")
             return None
@@ -133,8 +137,20 @@ class Validator:
                 if parsed.scheme not in {"http", "https"} or not parsed.netloc:
                     self.error(f"{location}.source_link", "must be an HTTP(S) URL")
 
+        file_link = entry.get("file_link")
+        expected_file_links = {
+            f"maps/{map_id}/{map_id}.mp",
+            f"maps/{map_id}/{map_id}.zip",
+        }
+        if file_link not in expected_file_links:
+            expected = " or ".join(
+                repr(path) for path in sorted(expected_file_links)
+            )
+            self.error(f"{location}.file_link", f"must be {expected}")
+        else:
+            self.validate_asset(file_link, f"{location}.file_link", entry.get("size"))
+
         expected_paths = {
-            "file_link": f"maps/{map_id}/{map_id}.mp",
             "preview_link": f"maps/{map_id}/{map_id}_preview.png",
             "full_preview_link": f"maps/{map_id}/{map_id}_full.png",
         }
@@ -144,12 +160,13 @@ class Validator:
             if value != expected:
                 self.error(field_location, f"must be {expected!r}")
                 continue
-            expected_size = entry.get("size") if field == "file_link" else None
-            self.validate_asset(value, field_location, expected_size)
+            self.validate_asset(value, field_location)
 
         map_dir = MAPS_DIR / map_id
         if map_dir.is_dir():
             expected_names = {PurePosixPath(path).name for path in expected_paths.values()}
+            if isinstance(file_link, str):
+                expected_names.add(PurePosixPath(file_link).name)
             actual_names = {path.name for path in map_dir.iterdir()}
             for extra in sorted(actual_names - expected_names):
                 self.error(f"maps/{map_id}/{extra}", "unexpected file or directory")
@@ -219,6 +236,8 @@ class Validator:
             self.validate_png(path, location)
         elif path.suffix == ".mp":
             self.validate_mp(path, location, expected_size)
+        elif path.suffix == ".zip":
+            self.validate_zip(path, location, expected_size)
 
     def validate_png(self, path: Path, location: str) -> None:
         try:
@@ -235,25 +254,94 @@ class Validator:
     def validate_mp(self, path: Path, location: str, expected_size: object) -> None:
         try:
             header = path.read_bytes()[:6]
-            if len(header) < 6:
-                self.error(location, "is too short to be a valid MP file")
-                return
-            width, height, _ = struct.unpack("<HHH", header)
-            if width == 0 or height == 0:
-                self.error(location, "MP dimensions must be non-zero")
-                return
-            if isinstance(expected_size, dict):
-                catalog_dimensions = (
-                    expected_size.get("width"),
-                    expected_size.get("height"),
-                )
-                if catalog_dimensions != (width, height):
-                    self.error(
-                        location,
-                        f"MP dimensions are {width}x{height}, not "
-                        f"{catalog_dimensions[0]}x{catalog_dimensions[1]}",
-                    )
+            self.validate_mp_header(header, location, expected_size)
         except OSError as exc:
+            self.error(location, str(exc))
+
+    def validate_mp_header(
+        self, header: bytes, location: str, expected_size: object
+    ) -> None:
+        if len(header) < 6:
+            self.error(location, "is too short to be a valid MP file")
+            return
+        width, height, _ = struct.unpack("<HHH", header)
+        if width == 0 or height == 0:
+            self.error(location, "MP dimensions must be non-zero")
+            return
+        if isinstance(expected_size, dict):
+            catalog_dimensions = (
+                expected_size.get("width"),
+                expected_size.get("height"),
+            )
+            if catalog_dimensions != (width, height):
+                self.error(
+                    location,
+                    f"MP dimensions are {width}x{height}, not "
+                    f"{catalog_dimensions[0]}x{catalog_dimensions[1]}",
+                )
+
+    def validate_zip(self, path: Path, location: str, expected_size: object) -> None:
+        if not zipfile.is_zipfile(path):
+            self.error(location, "is not a valid ZIP file")
+            return
+        try:
+            with zipfile.ZipFile(path) as archive:
+                members = archive.infolist()
+                if not members:
+                    self.error(location, "ZIP file is empty")
+                folded_names: set[str] = set()
+                map_members: list[zipfile.ZipInfo] = []
+                for member in members:
+                    normalized_name = member.filename.replace("\\", "/")
+                    member_path = PurePosixPath(normalized_name)
+                    if (
+                        member_path.is_absolute()
+                        or WINDOWS_ABSOLUTE_PATTERN.match(member.filename)
+                        or ".." in member_path.parts
+                    ):
+                        self.error(location, f"ZIP has unsafe path: {member.filename!r}")
+                    suffix = member_path.suffix.casefold()
+                    if suffix in EXECUTABLE_SUFFIXES:
+                        self.error(
+                            location,
+                            f"ZIP contains an executable: {member.filename!r}",
+                        )
+                    folded = member.filename.casefold()
+                    if folded in folded_names:
+                        self.error(location, f"ZIP has duplicate path: {member.filename!r}")
+                    folded_names.add(folded)
+                    unix_mode = member.external_attr >> 16
+                    if stat.S_ISLNK(unix_mode):
+                        self.error(
+                            location,
+                            f"ZIP contains a symbolic link: {member.filename!r}",
+                        )
+                    if member.flag_bits & 0x1:
+                        self.error(
+                            location,
+                            f"ZIP contains an encrypted file: {member.filename!r}",
+                        )
+                    is_metadata = (
+                        "__MACOSX" in member_path.parts
+                        or member_path.name.startswith("._")
+                    )
+                    if suffix == ".mp" and not member.is_dir() and not is_metadata:
+                        map_members.append(member)
+
+                if len(map_members) != 1:
+                    self.error(location, "ZIP must contain exactly one playable MP file")
+                else:
+                    with archive.open(map_members[0]) as map_file:
+                        header = map_file.read(6)
+                    self.validate_mp_header(
+                        header,
+                        f"{location} member {map_members[0].filename!r}",
+                        expected_size,
+                    )
+                corrupt = archive.testzip()
+                if corrupt:
+                    self.error(location, f"ZIP member failed CRC check: {corrupt!r}")
+        except (OSError, RuntimeError, zipfile.BadZipFile) as exc:
             self.error(location, str(exc))
 
 

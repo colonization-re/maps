@@ -15,6 +15,9 @@ Thank you for helping preserve the Colonization mapping community's work.
    maps/<id>/<id>_full.png
    ```
 
+   If the map requires supporting scenario files, `<id>.zip` may replace
+   `<id>.mp`.
+
 4. Add one entry to `maps.json`. Keep entries sorted by `id`. All catalog links
    must be relative paths matching the names above.
 5. Run `python3 tools/validate_archive.py` from the repository root.
@@ -26,9 +29,12 @@ Thank you for helping preserve the Colonization mapping community's work.
   match the map ID. Do not modify the map data itself.
 - If a download contains multiple `.mp` files, create a separate map directory
   and catalog entry for each one.
+- Use a ZIP only when supporting files are needed for the map to work. Name it
+  `<id>.zip`; it must contain exactly one playable `.mp` file and must not be
+  encrypted or contain executables, symbolic links, or unsafe paths.
 - Use PNG for both images. The preview should be a reasonably small version for
   gallery use; the full image should retain the best available resolution.
-- Do not add archives, executables, or unrelated files.
+- Do not add unrelated archives, executables, or files.
 - GitHub rejects individual files larger than 100 MiB. If an artifact is that
   large, discuss it in an issue before submitting it.
 

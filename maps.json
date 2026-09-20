@@ -1,6 +1,6 @@
 {
   "$schema": "./maps.schema.json",
-  "catalog_version": 2,
+  "catalog_version": 3,
   "maps": [
     {
       "id": "assorted-flat",
@@ -106,6 +106,20 @@
       "file_link": "maps/assorted2-europe/assorted2-europe.mp",
       "preview_link": "maps/assorted2-europe/assorted2-europe_preview.png",
       "full_preview_link": "maps/assorted2-europe/assorted2-europe_full.png"
+    },
+    {
+      "id": "col-aus",
+      "name": "Colonization Australia",
+      "author": "Gilgames",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 72
+      },
+      "tags": [],
+      "file_link": "maps/col-aus/col-aus.zip",
+      "preview_link": "maps/col-aus/col-aus_preview.png",
+      "full_preview_link": "maps/col-aus/col-aus_full.png"
     },
     {
       "id": "jdd003",

@@ -1,3 +1,4 @@
 *.png binary
 *.mp binary
+*.zip binary
 maps.json linguist-language=JSON

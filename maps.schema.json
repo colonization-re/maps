@@ -10,7 +10,7 @@
       "type": "string"
     },
     "catalog_version": {
-      "const": 2
+      "const": 3
     },
     "maps": {
       "type": "array",
@@ -22,7 +22,7 @@
   "$defs": {
     "relativePath": {
       "type": "string",
-      "pattern": "^maps/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9_-]+\\.(?:mp|png)$"
+      "pattern": "^maps/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9_-]+\\.(?:mp|png|zip)$"
     },
     "map": {
       "type": "object",
