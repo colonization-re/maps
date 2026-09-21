@@ -137,6 +137,276 @@
       "full_preview_link": "maps/jdd003/jdd003_full.png"
     },
     {
+      "id": "l-america-js-the-dude",
+      "name": "America",
+      "author": "JsTheDude",
+      "release_date": null,
+      "size": {
+        "width": 56,
+        "height": 259
+      },
+      "tags": [
+        "freecol",
+        "large"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_America_JsTheDude.fsm",
+      "file_link": "maps/l-america-js-the-dude/l-america-js-the-dude.mp",
+      "preview_link": "maps/l-america-js-the-dude/l-america-js-the-dude_preview.png",
+      "full_preview_link": "maps/l-america-js-the-dude/l-america-js-the-dude_full.png"
+    },
+    {
+      "id": "l-america-mazim",
+      "name": "America",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 56,
+        "height": 259
+      },
+      "tags": [
+        "freecol",
+        "large"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_America_Mazim.fsm",
+      "file_link": "maps/l-america-mazim/l-america-mazim.mp",
+      "preview_link": "maps/l-america-mazim/l-america-mazim_preview.png",
+      "full_preview_link": "maps/l-america-mazim/l-america-mazim_full.png"
+    },
+    {
+      "id": "l-asia-mazim",
+      "name": "Asia",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 66,
+        "height": 254
+      },
+      "tags": [
+        "freecol",
+        "large"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_Asia_Mazim.fsm",
+      "file_link": "maps/l-asia-mazim/l-asia-mazim.mp",
+      "preview_link": "maps/l-asia-mazim/l-asia-mazim_preview.png",
+      "full_preview_link": "maps/l-asia-mazim/l-asia-mazim_full.png"
+    },
+    {
+      "id": "l-pacific-south-mazim",
+      "name": "Pacific South",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 68,
+        "height": 198
+      },
+      "tags": [
+        "freecol",
+        "large"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_PacificSouth_Mazim.fsm",
+      "file_link": "maps/l-pacific-south-mazim/l-pacific-south-mazim.mp",
+      "preview_link": "maps/l-pacific-south-mazim/l-pacific-south-mazim_preview.png",
+      "full_preview_link": "maps/l-pacific-south-mazim/l-pacific-south-mazim_full.png"
+    },
+    {
+      "id": "l-the-old-world-mazim",
+      "name": "The Old World",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 86,
+        "height": 138
+      },
+      "tags": [
+        "freecol",
+        "large"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_TheOldWorld_Mazim.fsm",
+      "file_link": "maps/l-the-old-world-mazim/l-the-old-world-mazim.mp",
+      "preview_link": "maps/l-the-old-world-mazim/l-the-old-world-mazim_preview.png",
+      "full_preview_link": "maps/l-the-old-world-mazim/l-the-old-world-mazim_full.png"
+    },
+    {
+      "id": "m-africa-gilolat",
+      "name": "Africa",
+      "author": "Gilolat",
+      "release_date": null,
+      "size": {
+        "width": 35,
+        "height": 190
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Africa_Gilolat.fsm",
+      "file_link": "maps/m-africa-gilolat/m-africa-gilolat.mp",
+      "preview_link": "maps/m-africa-gilolat/m-africa-gilolat_preview.png",
+      "full_preview_link": "maps/m-africa-gilolat/m-africa-gilolat_full.png"
+    },
+    {
+      "id": "m-africa-mazim",
+      "name": "Africa",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 38,
+        "height": 158
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Africa_Mazim.fsm",
+      "file_link": "maps/m-africa-mazim/m-africa-mazim.mp",
+      "preview_link": "maps/m-africa-mazim/m-africa-mazim_preview.png",
+      "full_preview_link": "maps/m-africa-mazim/m-africa-mazim_full.png"
+    },
+    {
+      "id": "m-america-mazim",
+      "name": "America",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 38,
+        "height": 178
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_America_Mazim.fsm",
+      "file_link": "maps/m-america-mazim/m-america-mazim.mp",
+      "preview_link": "maps/m-america-mazim/m-america-mazim_preview.png",
+      "full_preview_link": "maps/m-america-mazim/m-america-mazim_full.png"
+    },
+    {
+      "id": "m-australia-oceania-mazim",
+      "name": "Australia Oceania",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 48,
+        "height": 158
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_AustraliaOceania_Mazim.fsm",
+      "file_link": "maps/m-australia-oceania-mazim/m-australia-oceania-mazim.mp",
+      "preview_link": "maps/m-australia-oceania-mazim/m-australia-oceania-mazim_preview.png",
+      "full_preview_link": "maps/m-australia-oceania-mazim/m-australia-oceania-mazim_full.png"
+    },
+    {
+      "id": "m-caribbean-islands-mazim",
+      "name": "Caribbean Islands",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 78,
+        "height": 158
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_CaribbeanIslands_Mazim.fsm",
+      "file_link": "maps/m-caribbean-islands-mazim/m-caribbean-islands-mazim.mp",
+      "preview_link": "maps/m-caribbean-islands-mazim/m-caribbean-islands-mazim_preview.png",
+      "full_preview_link": "maps/m-caribbean-islands-mazim/m-caribbean-islands-mazim_full.png"
+    },
+    {
+      "id": "m-caribbean-piotrus",
+      "name": "Caribbean",
+      "author": "Piotrus",
+      "release_date": null,
+      "size": {
+        "width": 58,
+        "height": 138
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Caribbean_Piotrus.fsm",
+      "file_link": "maps/m-caribbean-piotrus/m-caribbean-piotrus.mp",
+      "preview_link": "maps/m-caribbean-piotrus/m-caribbean-piotrus_preview.png",
+      "full_preview_link": "maps/m-caribbean-piotrus/m-caribbean-piotrus_full.png"
+    },
+    {
+      "id": "m-eurasia-mazim",
+      "name": "Eurasia",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 43,
+        "height": 118
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Eurasia_Mazim.fsm",
+      "file_link": "maps/m-eurasia-mazim/m-eurasia-mazim.mp",
+      "preview_link": "maps/m-eurasia-mazim/m-eurasia-mazim_preview.png",
+      "full_preview_link": "maps/m-eurasia-mazim/m-eurasia-mazim_full.png"
+    },
+    {
+      "id": "m-north-america-2-mazim",
+      "name": "North America 2",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 34,
+        "height": 158
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_NorthAmerica2_Mazim.fsm",
+      "file_link": "maps/m-north-america-2-mazim/m-north-america-2-mazim.mp",
+      "preview_link": "maps/m-north-america-2-mazim/m-north-america-2-mazim_preview.png",
+      "full_preview_link": "maps/m-north-america-2-mazim/m-north-america-2-mazim_full.png"
+    },
+    {
+      "id": "m-north-america-mazim",
+      "name": "North America",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 50,
+        "height": 128
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_NorthAmerica_Mazim.fsm",
+      "file_link": "maps/m-north-america-mazim/m-north-america-mazim.mp",
+      "preview_link": "maps/m-north-america-mazim/m-north-america-mazim_preview.png",
+      "full_preview_link": "maps/m-north-america-mazim/m-north-america-mazim_full.png"
+    },
+    {
+      "id": "m-south-america-mazim",
+      "name": "South America",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 33,
+        "height": 151
+      },
+      "tags": [
+        "freecol",
+        "medium"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_SouthAmerica_Mazim.fsm",
+      "file_link": "maps/m-south-america-mazim/m-south-america-mazim.mp",
+      "preview_link": "maps/m-south-america-mazim/m-south-america-mazim_preview.png",
+      "full_preview_link": "maps/m-south-america-mazim/m-south-america-mazim_full.png"
+    },
+    {
       "id": "orig13",
       "name": "Eastern North America",
       "author": "Patrick Minton",
@@ -150,6 +420,150 @@
       "file_link": "maps/orig13/orig13.mp",
       "preview_link": "maps/orig13/orig13_preview.png",
       "full_preview_link": "maps/orig13/orig13_full.png"
+    },
+    {
+      "id": "s-arabias-mazim",
+      "name": "Arabias",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 38,
+        "height": 98
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_Arabias_Mazim.fsm",
+      "file_link": "maps/s-arabias-mazim/s-arabias-mazim.mp",
+      "preview_link": "maps/s-arabias-mazim/s-arabias-mazim_preview.png",
+      "full_preview_link": "maps/s-arabias-mazim/s-arabias-mazim_full.png"
+    },
+    {
+      "id": "s-australia-oceania-gilolat",
+      "name": "Australia Oceania",
+      "author": "Gilolat",
+      "release_date": null,
+      "size": {
+        "width": 26,
+        "height": 126
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_AustraliaOceania_Gilolat.fsm",
+      "file_link": "maps/s-australia-oceania-gilolat/s-australia-oceania-gilolat.mp",
+      "preview_link": "maps/s-australia-oceania-gilolat/s-australia-oceania-gilolat_preview.png",
+      "full_preview_link": "maps/s-australia-oceania-gilolat/s-australia-oceania-gilolat_full.png"
+    },
+    {
+      "id": "s-caribbean-phil",
+      "name": "Caribbean",
+      "author": "Phil",
+      "release_date": null,
+      "size": {
+        "width": 46,
+        "height": 46
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_Caribbean_Phil.fsm",
+      "file_link": "maps/s-caribbean-phil/s-caribbean-phil.mp",
+      "preview_link": "maps/s-caribbean-phil/s-caribbean-phil_preview.png",
+      "full_preview_link": "maps/s-caribbean-phil/s-caribbean-phil_full.png"
+    },
+    {
+      "id": "s-feudal-japan-mazim",
+      "name": "Feudal Japan",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 28,
+        "height": 118
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_FeudalJapan_Mazim.fsm",
+      "file_link": "maps/s-feudal-japan-mazim/s-feudal-japan-mazim.mp",
+      "preview_link": "maps/s-feudal-japan-mazim/s-feudal-japan-mazim_preview.png",
+      "full_preview_link": "maps/s-feudal-japan-mazim/s-feudal-japan-mazim_full.png"
+    },
+    {
+      "id": "s-south-east-asia-mazim",
+      "name": "South East Asia",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 38,
+        "height": 98
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_SouthEastAsia_Mazim.fsm",
+      "file_link": "maps/s-south-east-asia-mazim/s-south-east-asia-mazim.mp",
+      "preview_link": "maps/s-south-east-asia-mazim/s-south-east-asia-mazim_preview.png",
+      "full_preview_link": "maps/s-south-east-asia-mazim/s-south-east-asia-mazim_full.png"
+    },
+    {
+      "id": "s-usa-mazim",
+      "name": "USA",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 38,
+        "height": 98
+      },
+      "tags": [
+        "freecol",
+        "small"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_USA_Mazim.fsm",
+      "file_link": "maps/s-usa-mazim/s-usa-mazim.mp",
+      "preview_link": "maps/s-usa-mazim/s-usa-mazim_preview.png",
+      "full_preview_link": "maps/s-usa-mazim/s-usa-mazim_full.png"
+    },
+    {
+      "id": "xl-giga-earth-mazim",
+      "name": "Giga Earth",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 125,
+        "height": 228
+      },
+      "tags": [
+        "extra-large",
+        "freecol"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/XL_GigaEarth_Mazim.fsm",
+      "file_link": "maps/xl-giga-earth-mazim/xl-giga-earth-mazim.mp",
+      "preview_link": "maps/xl-giga-earth-mazim/xl-giga-earth-mazim_preview.png",
+      "full_preview_link": "maps/xl-giga-earth-mazim/xl-giga-earth-mazim_full.png"
+    },
+    {
+      "id": "xxl-huge-world-mazim",
+      "name": "Huge World",
+      "author": "Mazim",
+      "release_date": null,
+      "size": {
+        "width": 178,
+        "height": 298
+      },
+      "tags": [
+        "extra-extra-large",
+        "freecol"
+      ],
+      "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/XXL_HugeWorld_Mazim.fsm",
+      "file_link": "maps/xxl-huge-world-mazim/xxl-huge-world-mazim.mp",
+      "preview_link": "maps/xxl-huge-world-mazim/xxl-huge-world-mazim_preview.png",
+      "full_preview_link": "maps/xxl-huge-world-mazim/xxl-huge-world-mazim_full.png"
     }
   ]
 }
