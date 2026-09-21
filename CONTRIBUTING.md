@@ -59,6 +59,9 @@ changes yourself.
   encrypted or contain executables, symbolic links, or unsafe paths.
 - Use PNG for both images. The preview should be a reasonably small version for
   gallery use; the full image should retain the best available resolution.
+  `tools/render_previews.sh` draws both from the map file — see
+  [README](README.md#render-the-preview-images) — so a submission does not need
+  to include them, and a reviewer can reproduce them.
 - Do not add unrelated archives, executables, or files.
 - GitHub rejects individual files larger than 100 MiB. If an artifact is that
   large, discuss it in an issue before submitting it.

@@ -69,6 +69,30 @@ preserved maps whose exact date is unavailable, `release_date` may be a year
 date can be found. `source_link` is optional, but strongly encouraged for
 archived maps.
 
+## Render the preview images
+
+The two PNGs beside each map are drawn from the map file itself, by
+`colwin map-preview` from the sibling
+[win-tools](https://github.com/colonization-re/win-tools) repository. It paints
+each square the way the game does — terrain and its seams, forests, hills and
+mountains, rivers and their mouths, coastlines, roads — so the picture is what a
+player would see rather than a colour per tile.
+
+```sh
+COLWIN_GAME=~/games/colonization tools/render_previews.sh
+```
+
+That walks the catalog, takes each entry's `file_link` (a `.mp`, or the one
+playable `.mp` inside a `.zip`), and writes `<id>_full.png` at 32 pixels a
+square and `<id>_preview.png` at 8. `--only ID` does one map, and `--check`
+re-renders into a temporary directory and compares instead of writing, which is
+how to tell whether the committed images are still current.
+
+The artwork comes out of the game's own `COLDATA1.DLL`, so a retail install has
+to be to hand: pass `--game DIR` or set `COLWIN_GAME`. Neither this repository
+nor win-tools contains the game. `--colwin PATH` points at `colwin.py` if the
+checkout is not beside this one.
+
 ## Validate the archive
 
 Python 3.9 or newer is the only requirement:
