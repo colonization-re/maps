@@ -58,7 +58,7 @@ body:
     attributes:
       label: Map size
       description: Playable width and height in tiles, if known.
-      placeholder: 58 x 72
+      placeholder: 56 x 70
     validations:
       required: false
 

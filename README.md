@@ -50,8 +50,8 @@ can be converted to raw GitHub URLs by consumers.
       "author": "Jane Doe",
       "release_date": "1996-08-14",
       "size": {
-        "width": 58,
-        "height": 72
+        "width": 56,
+        "height": 70
       },
       "tags": ["historical", "large"],
       "source_link": "https://web.archive.org/web/20010101000000/https://example.com/new-world",
@@ -92,6 +92,19 @@ The artwork comes out of the game's own `COLDATA1.DLL`, so a retail install has
 to be to hand: pass `--game DIR` or set `COLWIN_GAME`. Neither this repository
 nor win-tools contains the game. `--colwin PATH` points at `colwin.py` if the
 checkout is not beside this one.
+
+## Update map dimensions
+
+The `size` fields in `maps.json` can be refreshed from the playable map files:
+
+```sh
+tools/update_maps_metada.sh
+```
+
+That crawls `maps/**/*.mp` and `maps/**/*.zip`, reads each `.MP` file's raw
+grid, records the playable interior width and height, and updates the matching
+catalog entry. `--check` reports whether the committed metadata is current
+without writing.
 
 ## Validate the archive
 

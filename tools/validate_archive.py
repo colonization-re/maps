@@ -269,14 +269,16 @@ class Validator:
             self.error(location, "MP dimensions must be non-zero")
             return
         if isinstance(expected_size, dict):
+            playable_dimensions = (width - 2, height - 2)
             catalog_dimensions = (
                 expected_size.get("width"),
                 expected_size.get("height"),
             )
-            if catalog_dimensions != (width, height):
+            if catalog_dimensions != playable_dimensions:
                 self.error(
                     location,
-                    f"MP dimensions are {width}x{height}, not "
+                    f"playable MP dimensions are "
+                    f"{playable_dimensions[0]}x{playable_dimensions[1]}, not "
                     f"{catalog_dimensions[0]}x{catalog_dimensions[1]}",
                 )
 
