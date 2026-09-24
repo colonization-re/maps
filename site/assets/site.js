@@ -5,7 +5,11 @@
   const grid = document.querySelector("[data-map-grid]");
   const sort = document.querySelector("[data-map-sort]");
   const search = document.querySelector("[data-map-search]");
-  const filter = document.querySelector("[data-map-filter]");
+  const tagPicker = document.querySelector("[data-map-tag-picker]");
+  const tagToggle = document.querySelector("[data-map-tag-toggle]");
+  const tagMenu = document.querySelector("[data-map-tag-menu]");
+  const tagValue = document.querySelector("[data-map-tag-value]");
+  const tagOptions = [...document.querySelectorAll("[data-map-tag-option]")];
   const clear = document.querySelector("[data-clear-filters]");
   const status = document.querySelector("[data-filter-status]");
   const noResults = document.querySelector("[data-no-results]");
@@ -46,8 +50,12 @@
 
   function updateResults() {
     const query = normalize(search?.value.trim() || "");
-    const selected = [...(filter?.selectedOptions || [])].map((option) => option.value);
+    const selected = tagOptions.filter((option) => option.checked).map((option) => option.value);
     let visible = 0;
+
+    if (tagValue) {
+      tagValue.textContent = selected.length ? selected.join(", ") : "Any tag";
+    }
 
     for (const card of cards) {
       const tags = (card.dataset.tags || "").split(/\s+/).filter(Boolean);
@@ -64,14 +72,40 @@
   }
 
   search?.addEventListener("input", updateResults);
-  filter?.addEventListener("change", updateResults);
+  for (const option of tagOptions) {
+    option.addEventListener("change", updateResults);
+  }
+  tagToggle?.addEventListener("click", () => {
+    const isOpen = tagToggle.getAttribute("aria-expanded") === "true";
+    tagToggle.setAttribute("aria-expanded", String(!isOpen));
+    if (tagMenu) {
+      tagMenu.hidden = isOpen;
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (!tagPicker?.contains(event.target)) {
+      tagToggle?.setAttribute("aria-expanded", "false");
+      if (tagMenu) {
+        tagMenu.hidden = true;
+      }
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      tagToggle?.setAttribute("aria-expanded", "false");
+      if (tagMenu) {
+        tagMenu.hidden = true;
+      }
+      tagToggle?.focus();
+    }
+  });
   sort?.addEventListener("change", updateSort);
   clear?.addEventListener("click", () => {
     if (search) {
       search.value = "";
     }
-    for (const option of filter?.options || []) {
-      option.selected = false;
+    for (const option of tagOptions) {
+      option.checked = false;
     }
     search?.focus();
     updateResults();

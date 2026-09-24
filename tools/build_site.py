@@ -112,7 +112,10 @@ def map_card(entry: dict[str, Any]) -> str:
 def tag_filter_controls(entries: list[dict[str, Any]]) -> str:
     tags = sorted({tag for entry in entries for tag in entry["tags"]})
     return "\n".join(
-        f'              <option value="{escaped(tag)}">{escaped(tag)}</option>'
+        f"""                <label class="archive-tag-option">
+                  <input type="checkbox" value="{escaped(tag)}" data-map-tag-option>
+                  <span>{escaped(tag)}</span>
+                </label>"""
         for tag in tags
     )
 
@@ -140,12 +143,17 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
             <span class="col-label">Search maps</span>
             <input class="col-input" type="search" placeholder="Name, author, or tag" autocomplete="off" data-map-search>
           </label>
-          <label class="col-field archive-tag-filter-field">
+          <div class="col-field archive-tag-filter-field">
             <span class="col-label">Filter by tag</span>
-            <select class="col-input archive-tag-select" multiple size="4" data-map-filter>
+            <div class="archive-tag-picker" data-map-tag-picker>
+              <button class="col-input archive-tag-input" type="button" data-map-tag-toggle aria-expanded="false">
+                <span class="archive-tag-value" data-map-tag-value>Any tag</span>
+              </button>
+              <div class="archive-tag-menu" data-map-tag-menu hidden>
 {filters}
-            </select>
-          </label>
+              </div>
+            </div>
+          </div>
           <label class="col-field archive-sort-field">
             <span class="col-label">Sort maps</span>
             <select class="col-input" data-map-sort>
