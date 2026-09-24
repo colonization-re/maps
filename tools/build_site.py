@@ -170,7 +170,7 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
         </div>
       </div>
       <p class="col-note col-note--warn" data-no-results hidden>No maps match the current filters.</p>
-      <div class="col-grid" data-map-grid>
+      <div class="col-grid archive-map-grid" data-map-grid>
 {cards}
       </div>
     </section>"""

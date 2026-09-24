@@ -105,6 +105,11 @@ body.archive-background{
 .archive-sort-field{flex:0 1 180px;margin:0}
 .archive-filter-status{margin:0}
 
+.archive-map-grid{
+  grid-template-columns:repeat(auto-fill,minmax(260px,360px));
+  justify-content:start;
+}
+
 .archive-map-card{
   display:flex;
   flex-direction:column;
