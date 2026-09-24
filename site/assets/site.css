@@ -46,10 +46,43 @@ body.archive-background{
   background:color-mix(in srgb,var(--surface-3) 96%,transparent);
 }
 
-.archive-search-panel{margin-bottom:24px}
-.archive-search-field{flex:1 1 320px;margin:0;max-width:640px}
+.archive-filter-panel{margin-bottom:24px}
+.archive-filter-field{flex:1 1 320px;min-width:0;margin:0;padding:0;border:0}
+.archive-tag-filter{gap:8px}
+.archive-filter-option{display:inline-flex}
+.archive-filter-option input{
+  position:absolute;
+  inline-size:1px;
+  block-size:1px;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+}
+.archive-filter-chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:4px 9px;
+  color:var(--text);
+  font-size:.78rem;
+  font-weight:700;
+  line-height:1;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:999px;
+  cursor:pointer;
+}
+.archive-filter-option input:checked + .archive-filter-chip{
+  color:var(--on-brand);
+  background:var(--brand);
+  border-color:var(--brand);
+}
+.archive-filter-option input:focus-visible + .archive-filter-chip{
+  outline:2px solid var(--brand);
+  outline-offset:2px;
+}
 .archive-sort-field{flex:0 1 180px;margin:0}
-.archive-search-status{margin:0}
+.archive-filter-status{margin:0}
 
 .archive-map-card{
   display:flex;
@@ -84,8 +117,16 @@ body.archive-background{
 }
 .archive-map-body h2{margin-top:0}
 .archive-map-body .col-dl{grid-template-columns:auto minmax(0,1fr)}
-.archive-map-actions{margin-top:auto;padding-top:8px}
+.archive-map-footer{margin-top:auto;padding-top:8px}
+.archive-map-footer > .col-btn{margin-bottom:8px}
+.archive-map-actions{padding-top:0}
+.archive-action-icon{flex:0 0 auto;margin-left:6px}
 .archive-tags{margin:0 0 20px}
+.archive-tag{
+  padding:2px 6px;
+  font-size:.68rem;
+  line-height:1.1;
+}
 
 .archive-empty{max-width:760px;margin-inline:auto;text-align:center}
 .archive-empty h2{margin-top:0}
@@ -120,7 +161,7 @@ body.archive-background{
 @media print{
   body.archive-background{background:#fff}
   .archive-skip-link,
-  .archive-search-panel,.archive-map-actions{display:none}
+  .archive-filter-panel,.archive-map-actions{display:none}
   .archive-intro{padding:24px 0;text-shadow:none}
   .archive-map-card{break-inside:avoid}
 }

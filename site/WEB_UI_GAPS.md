@@ -44,7 +44,7 @@ A `.col-toolbar` composition for filters and compact actions:
 - remove the normal bottom margin from direct `.col-field` children;
 - provide a clean single-column layout at narrow widths.
 
-This would replace the small `.archive-search-*` layout rules and generalize
+This would replace the small `.archive-filter-*` layout rules and generalize
 the existing margin normalization that `.col-row` already provides.
 
 ## Release asset delivery

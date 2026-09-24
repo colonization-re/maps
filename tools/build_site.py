@@ -34,6 +34,20 @@ def escaped(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
+EXTERNAL_ICON = (
+    '<svg class="archive-action-icon" aria-hidden="true" viewBox="0 0 24 24" '
+    'width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M15 3h6v6"></path><path d="M10 14 21 3"></path>'
+    '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>'
+    '</svg>'
+)
+
+
+def external_label(label: str) -> str:
+    return f"{label}{EXTERNAL_ICON}"
+
+
 def map_card(entry: dict[str, Any]) -> str:
     map_id = escaped(entry["id"])
     name = escaped(entry["name"])
@@ -49,7 +63,7 @@ def map_card(entry: dict[str, Any]) -> str:
     height = entry["size"]["height"]
     area = width * height
     tags = "".join(
-        f'<span class="col-badge col-badge--brand">{escaped(tag)}</span>'
+        f'<span class="col-badge col-badge--brand archive-tag">{escaped(tag)}</span>'
         for tag in entry["tags"]
     )
     if not tags:
@@ -60,18 +74,16 @@ def map_card(entry: dict[str, Any]) -> str:
     if source_link:
         source_action = (
             f'<a class="col-btn col-btn--quiet col-btn--sm" href="{escaped(source_link)}" '
-            'target="_blank" rel="noopener noreferrer">Original source</a>'
+            f'target="_blank" rel="noopener noreferrer">{external_label("Original source")}</a>'
         )
 
-    search_text = " ".join(
-        [entry["id"], entry["name"], entry["author"], *entry["tags"]]
-    )
+    tag_list = " ".join(entry["tags"])
     file_link = escaped(entry["file_link"])
     preview_link = escaped(entry["preview_link"])
     full_preview_link = escaped(entry["full_preview_link"])
 
-    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-search="{escaped(search_text)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
-        <a class="archive-map-preview" href="{full_preview_link}" aria-label="View full-size map image for {name}">
+    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-tags="{escaped(tag_list)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
+        <a class="archive-map-preview" href="{full_preview_link}" aria-label="View full-size map image for {name}" target="_blank" rel="noopener noreferrer">
           <img class="col-art" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
         </a>
         <div class="archive-map-body">
@@ -83,13 +95,26 @@ def map_card(entry: dict[str, Any]) -> str:
             <dt>Map size</dt><dd class="col-mono col-tnum">{width} × {height} tiles</dd>
           </dl>
           <div class="col-row archive-tags" aria-label="Map tags">{tags}</div>
-          <div class="col-btnrow archive-map-actions">
-            <a class="col-btn col-btn--sm" href="{file_link}" download>Download map</a>
-            <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}">Full image</a>
+          <div class="archive-map-footer">
             {source_action}
+            <div class="col-btnrow archive-map-actions">
+              <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
+              <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}" target="_blank" rel="noopener noreferrer">{external_label("Preview")}</a>
+            </div>
           </div>
         </div>
       </article>"""
+
+
+def tag_filter_controls(entries: list[dict[str, Any]]) -> str:
+    tags = sorted({tag for entry in entries for tag in entry["tags"]})
+    return "\n".join(
+        f"""              <label class="archive-filter-option">
+                <input type="checkbox" value="{escaped(tag)}" data-map-filter>
+                <span class="archive-filter-chip">{escaped(tag)}</span>
+              </label>"""
+        for tag in tags
+    )
 
 
 def catalog_content(entries: list[dict[str, Any]]) -> str:
@@ -105,15 +130,18 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
     </section>"""
 
     cards = "\n".join(map_card(entry) for entry in entries)
+    filters = tag_filter_controls(entries)
     map_word = "map" if len(entries) == 1 else "maps"
     return f"""<section aria-labelledby="maps-title">
       <div class="col-sectionhead"><h2 id="maps-title">Map catalog</h2></div>
-      <div class="col-card archive-search-panel">
+      <div class="col-card archive-filter-panel">
         <div class="col-spread">
-          <label class="col-field archive-search-field">
-            <span class="col-label">Search maps</span>
-            <input class="col-input" type="search" placeholder="Name, author, or tag" autocomplete="off" data-map-search>
-          </label>
+          <fieldset class="archive-filter-field">
+            <legend class="col-label">Filter by tag</legend>
+            <div class="col-row archive-tag-filter">
+{filters}
+            </div>
+          </fieldset>
           <label class="col-field archive-sort-field">
             <span class="col-label">Sort maps</span>
             <select class="col-input" data-map-sort>
@@ -124,12 +152,12 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
             </select>
           </label>
           <div class="col-row">
-            <p class="col-meta archive-search-status" data-search-status aria-live="polite">{len(entries)} of {len(entries)} {map_word} shown</p>
-            <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-clear-search disabled>Clear</button>
+            <p class="col-meta archive-filter-status" data-filter-status aria-live="polite">{len(entries)} of {len(entries)} {map_word} shown</p>
+            <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-clear-filters disabled>Clear</button>
           </div>
         </div>
       </div>
-      <p class="col-note col-note--warn" data-no-results hidden>No maps match that search.</p>
+      <p class="col-note col-note--warn" data-no-results hidden>No maps match the selected tags.</p>
       <div class="col-grid" data-map-grid>
 {cards}
       </div>
