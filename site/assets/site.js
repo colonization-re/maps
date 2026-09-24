@@ -4,10 +4,12 @@
 
   const grid = document.querySelector("[data-map-grid]");
   const sort = document.querySelector("[data-map-sort]");
-  const filters = [...document.querySelectorAll("[data-map-filter]")];
+  const search = document.querySelector("[data-map-search]");
+  const filter = document.querySelector("[data-map-filter]");
   const clear = document.querySelector("[data-clear-filters]");
   const status = document.querySelector("[data-filter-status]");
   const noResults = document.querySelector("[data-no-results]");
+  const normalize = (value) => value.toLowerCase().normalize("NFKD").replace(/\p{M}/gu, "");
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
   function compareCards(first, second) {
@@ -43,30 +45,35 @@
   }
 
   function updateResults() {
-    const selected = filters.filter((filter) => filter.checked).map((filter) => filter.value);
+    const query = normalize(search?.value.trim() || "");
+    const selected = [...(filter?.selectedOptions || [])].map((option) => option.value);
     let visible = 0;
 
     for (const card of cards) {
       const tags = (card.dataset.tags || "").split(/\s+/).filter(Boolean);
-      const matches = selected.length === 0 || selected.some((tag) => tags.includes(tag));
+      const tagMatches = selected.length === 0 || selected.some((tag) => tags.includes(tag));
+      const searchMatches = !query || normalize(card.dataset.search || "").includes(query);
+      const matches = tagMatches && searchMatches;
       card.hidden = !matches;
       if (matches) visible += 1;
     }
 
     status.textContent = `${visible} of ${cards.length} ${cards.length === 1 ? "map" : "maps"} shown`;
     noResults.hidden = visible !== 0;
-    clear.disabled = selected.length === 0;
+    clear.disabled = selected.length === 0 && query.length === 0;
   }
 
-  for (const filter of filters) {
-    filter.addEventListener("change", updateResults);
-  }
+  search?.addEventListener("input", updateResults);
+  filter?.addEventListener("change", updateResults);
   sort?.addEventListener("change", updateSort);
   clear?.addEventListener("click", () => {
-    for (const filter of filters) {
-      filter.checked = false;
+    if (search) {
+      search.value = "";
     }
-    filters[0]?.focus();
+    for (const option of filter?.options || []) {
+      option.selected = false;
+    }
+    search?.focus();
     updateResults();
   });
   updateSort();

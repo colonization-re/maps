@@ -78,11 +78,14 @@ def map_card(entry: dict[str, Any]) -> str:
         )
 
     tag_list = " ".join(entry["tags"])
+    search_text = " ".join(
+        [entry["id"], entry["name"], entry["author"], *entry["tags"]]
+    )
     file_link = escaped(entry["file_link"])
     preview_link = escaped(entry["preview_link"])
     full_preview_link = escaped(entry["full_preview_link"])
 
-    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-tags="{escaped(tag_list)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
+    return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-search="{escaped(search_text)}" data-tags="{escaped(tag_list)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
         <a class="archive-map-preview" href="{full_preview_link}" aria-label="View full-size map image for {name}" target="_blank" rel="noopener noreferrer">
           <img class="col-art" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
         </a>
@@ -109,10 +112,7 @@ def map_card(entry: dict[str, Any]) -> str:
 def tag_filter_controls(entries: list[dict[str, Any]]) -> str:
     tags = sorted({tag for entry in entries for tag in entry["tags"]})
     return "\n".join(
-        f"""              <label class="archive-filter-option">
-                <input type="checkbox" value="{escaped(tag)}" data-map-filter>
-                <span class="archive-filter-chip">{escaped(tag)}</span>
-              </label>"""
+        f'              <option value="{escaped(tag)}">{escaped(tag)}</option>'
         for tag in tags
     )
 
@@ -136,12 +136,16 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
       <div class="col-sectionhead"><h2 id="maps-title">Map catalog</h2></div>
       <div class="col-card archive-filter-panel">
         <div class="col-spread">
-          <fieldset class="archive-filter-field">
-            <legend class="col-label">Filter by tag</legend>
-            <div class="col-row archive-tag-filter">
+          <label class="col-field archive-search-field">
+            <span class="col-label">Search maps</span>
+            <input class="col-input" type="search" placeholder="Name, author, or tag" autocomplete="off" data-map-search>
+          </label>
+          <label class="col-field archive-tag-filter-field">
+            <span class="col-label">Filter by tag</span>
+            <select class="col-input archive-tag-select" multiple size="4" data-map-filter>
 {filters}
-            </div>
-          </fieldset>
+            </select>
+          </label>
           <label class="col-field archive-sort-field">
             <span class="col-label">Sort maps</span>
             <select class="col-input" data-map-sort>
@@ -157,7 +161,7 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
           </div>
         </div>
       </div>
-      <p class="col-note col-note--warn" data-no-results hidden>No maps match the selected tags.</p>
+      <p class="col-note col-note--warn" data-no-results hidden>No maps match the current filters.</p>
       <div class="col-grid" data-map-grid>
 {cards}
       </div>
