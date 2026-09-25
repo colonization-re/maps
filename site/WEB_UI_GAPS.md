@@ -59,3 +59,13 @@ pinned asset at build time, then serving it from GitHub Pages as a `.css` file.
 A future web-ui release process could publish the stylesheet through a static
 host or package CDN that returns `text/css`, and document that URL for direct
 browser use.
+
+## Link button hover color
+
+`a:hover { color: var(--brand-hover) }` (specificity 0,1,1) beats `.col-btn`
+(0,1,0), and the default `.col-btn:hover` only changes background and border.
+So an `<a class="col-btn">` on hover shows `--brand-hover` text on a
+`--brand-hover` background, making the label invisible. Variants that set their
+own hover color are unaffected. The archive works around it with
+`a.col-btn:where(:hover){color:var(--_fg)}`; a future web-ui release could set
+`color: var(--_fg)` in `.col-btn:hover`.

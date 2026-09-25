@@ -117,6 +117,7 @@ def map_card(entry: dict[str, Any]) -> str:
     return f"""      <article class="col-card col-card--hover archive-map-card" data-map-card data-search="{escaped(search_text)}" data-tags="{escaped(tag_list)}" data-sort-name="{name}" data-sort-date="{escaped(release_date or "")}" data-sort-size="{area}">
         <a class="archive-map-preview" href="{full_preview_link}" aria-label="View full-size map image for {name}" target="_blank" rel="noopener noreferrer">
           <img class="col-art" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
+          <span class="archive-map-size col-mono col-tnum" aria-hidden="true">{width} × {height}</span>
         </a>
         <div class="archive-map-body">
           <h2>{name}</h2>
