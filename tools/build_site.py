@@ -70,11 +70,12 @@ def map_card(entry: dict[str, Any]) -> str:
         tags = '<span class="col-meta">No tags</span>'
 
     source_link = entry.get("source_link")
-    source_action = ""
+    source_row = ""
     if source_link:
-        source_action = (
-            f'<a class="col-btn col-btn--quiet col-btn--sm" href="{escaped(source_link)}" '
-            f'target="_blank" rel="noopener noreferrer">{external_label("Original source")}</a>'
+        source_row = (
+            '<dt>Original source</dt>'
+            f'<dd><a href="{escaped(source_link)}" target="_blank" '
+            f'rel="noopener noreferrer">{external_label("View source")}</a></dd>'
         )
 
     tag_list = " ".join(entry["tags"])
@@ -90,16 +91,19 @@ def map_card(entry: dict[str, Any]) -> str:
           <img class="col-art" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
         </a>
         <div class="archive-map-body">
-          <p class="col-eyebrow">{map_id}</p>
           <h2>{name}</h2>
-          <dl class="col-dl">
-            <dt>Author</dt><dd>{author}</dd>
-            <dt>Released</dt><dd>{date_markup}</dd>
-            <dt>Map size</dt><dd class="col-mono col-tnum">{width} × {height} tiles</dd>
-          </dl>
+          <p class="archive-map-author">{author}</p>
           <div class="col-row archive-tags" aria-label="Map tags">{tags}</div>
+          <details class="archive-map-details">
+            <summary>Details</summary>
+            <dl class="col-dl">
+              <dt>Map ID</dt><dd class="col-mono">{map_id}</dd>
+              <dt>Released</dt><dd>{date_markup}</dd>
+              <dt>Map size</dt><dd class="col-mono col-tnum">{width} × {height} tiles</dd>
+              {source_row}
+            </dl>
+          </details>
           <div class="archive-map-footer">
-            {source_action}
             <div class="col-btnrow archive-map-actions">
               <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
               <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}" target="_blank" rel="noopener noreferrer">{external_label("Preview")}</a>
