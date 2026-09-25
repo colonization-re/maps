@@ -2,7 +2,7 @@
 
 # Sid Meier's Colonization Map Archive
 
-![Ship leaving Europe](site/assets/ship-leaving-europe.png)
+![Ship leaving Europe](site/assets/ship-leaving-europe_readme.jpg)
 
 A community-maintained archive of custom maps for the original **Sid Meier's
 Colonization**. The project is intended to preserve maps from websites that
