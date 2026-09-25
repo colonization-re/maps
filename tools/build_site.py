@@ -50,6 +50,7 @@ def external_label(label: str) -> str:
 
 def map_card(entry: dict[str, Any]) -> str:
     map_id = escaped(entry["id"])
+    modal_id = escaped(f"details-{entry['id']}")
     name = escaped(entry["name"])
     author = escaped(entry["author"])
     release_date = entry["release_date"]
@@ -71,11 +72,16 @@ def map_card(entry: dict[str, Any]) -> str:
 
     source_link = entry.get("source_link")
     source_row = ""
+    source_action = ""
     if source_link:
         source_row = (
             '<dt>Original source</dt>'
             f'<dd><a href="{escaped(source_link)}" target="_blank" '
             f'rel="noopener noreferrer">{external_label("View source")}</a></dd>'
+        )
+        source_action = (
+            f'<a class="col-btn col-btn--quiet col-btn--sm" href="{escaped(source_link)}" '
+            f'target="_blank" rel="noopener noreferrer">{external_label("Source")}</a>'
         )
 
     tag_list = " ".join(entry["tags"])
@@ -94,22 +100,35 @@ def map_card(entry: dict[str, Any]) -> str:
           <h2>{name}</h2>
           <p class="archive-map-author">{author}</p>
           <div class="col-row archive-tags" aria-label="Map tags">{tags}</div>
-          <details class="archive-map-details">
-            <summary>Details</summary>
-            <dl class="col-dl">
-              <dt>Map ID</dt><dd class="col-mono">{map_id}</dd>
-              <dt>Released</dt><dd>{date_markup}</dd>
-              <dt>Map size</dt><dd class="col-mono col-tnum">{width} × {height} tiles</dd>
-              {source_row}
-            </dl>
-          </details>
           <div class="archive-map-footer">
             <div class="col-btnrow archive-map-actions">
               <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
-              <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}" target="_blank" rel="noopener noreferrer">{external_label("Preview")}</a>
+              <button class="col-btn col-btn--outline col-btn--sm" type="button" data-map-details-target="{modal_id}">Details</button>
             </div>
           </div>
         </div>
+        <dialog class="col-dialog archive-map-dialog" id="{modal_id}" data-map-details-dialog aria-labelledby="{modal_id}-title">
+          <div class="col-dialog-head">
+            <p class="col-eyebrow">{map_id}</p>
+            <h3 id="{modal_id}-title">{name}</h3>
+          </div>
+          <div class="col-dialog-body">
+            <img class="col-art archive-dialog-preview" src="{preview_link}" alt="Preview of {name}" loading="lazy" decoding="async">
+            <dl class="col-dl archive-dialog-details">
+              <dt>Author</dt><dd>{author}</dd>
+              <dt>Released</dt><dd>{date_markup}</dd>
+              <dt>Map size</dt><dd class="col-mono col-tnum">{width} × {height} tiles</dd>
+              <dt>Tags</dt><dd><div class="col-row archive-tags">{tags}</div></dd>
+              {source_row}
+            </dl>
+          </div>
+          <div class="col-dialog-foot">
+            {source_action}
+            <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}" target="_blank" rel="noopener noreferrer">{external_label("Full image")}</a>
+            <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
+            <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-map-details-close>Close</button>
+          </div>
+        </dialog>
       </article>"""
 
 

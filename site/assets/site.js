@@ -13,6 +13,7 @@
   const clear = document.querySelector("[data-clear-filters]");
   const status = document.querySelector("[data-filter-status]");
   const noResults = document.querySelector("[data-no-results]");
+  const detailButtons = [...document.querySelectorAll("[data-map-details-target]")];
   const normalize = (value) => value.toLowerCase().normalize("NFKD").replace(/\p{M}/gu, "");
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
@@ -100,6 +101,24 @@
     }
   });
   sort?.addEventListener("change", updateSort);
+  for (const button of detailButtons) {
+    button.addEventListener("click", () => {
+      const dialog = document.getElementById(button.dataset.mapDetailsTarget || "");
+      if (dialog instanceof HTMLDialogElement) {
+        dialog.showModal();
+      }
+    });
+  }
+  for (const dialog of document.querySelectorAll("[data-map-details-dialog]")) {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+    dialog.querySelector("[data-map-details-close]")?.addEventListener("click", () => {
+      dialog.close();
+    });
+  }
   clear?.addEventListener("click", () => {
     if (search) {
       search.value = "";

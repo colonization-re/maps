@@ -145,18 +145,6 @@ body.archive-background{
 .archive-map-body h2{margin-top:0}
 .archive-map-author{margin:-4px 0 14px;color:var(--text-2);font-weight:600}
 .archive-map-body .col-dl{grid-template-columns:auto minmax(0,1fr)}
-.archive-map-details{
-  margin:0 0 12px;
-  color:var(--text-2);
-  font-size:14px;
-}
-.archive-map-details summary{
-  width:max-content;
-  color:var(--brand);
-  font-weight:600;
-  cursor:pointer;
-}
-.archive-map-details .col-dl{margin:10px 0 0}
 .archive-map-footer{margin-top:auto;padding-top:8px}
 .archive-map-actions{padding-top:0}
 .archive-action-icon{flex:0 0 auto;margin-left:6px}
@@ -166,6 +154,16 @@ body.archive-background{
   font-size:.68rem;
   line-height:1.1;
 }
+.archive-map-dialog{max-width:min(680px,92vw)}
+.archive-dialog-preview{
+  width:100%;
+  max-height:360px;
+  margin:0 0 18px;
+  object-fit:contain;
+  background:var(--surface-2);
+}
+.archive-dialog-details{grid-template-columns:auto minmax(0,1fr)}
+.archive-dialog-details .archive-tags{margin:0}
 
 .archive-empty{max-width:760px;margin-inline:auto;text-align:center}
 .archive-empty h2{margin-top:0}
