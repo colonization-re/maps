@@ -3,6 +3,38 @@
   "catalog_version": 3,
   "maps": [
     {
+      "id": "america-maps-1",
+      "name": "America Maps 1",
+      "author": "Unknown",
+      "release_date": null,
+      "size": {
+        "width": 56,
+        "height": 70
+      },
+      "tags": [
+        "classic"
+      ],
+      "file_link": "maps/america-maps-1/america-maps-1.mp",
+      "preview_link": "maps/america-maps-1/america-maps-1_preview.png",
+      "full_preview_link": "maps/america-maps-1/america-maps-1_full.png"
+    },
+    {
+      "id": "america-maps-2",
+      "name": "America Maps 2",
+      "author": "Unknown",
+      "release_date": null,
+      "size": {
+        "width": 56,
+        "height": 70
+      },
+      "tags": [
+        "classic"
+      ],
+      "file_link": "maps/america-maps-2/america-maps-2.mp",
+      "preview_link": "maps/america-maps-2/america-maps-2_preview.png",
+      "full_preview_link": "maps/america-maps-2/america-maps-2_full.png"
+    },
+    {
       "id": "assorted-flat",
       "name": "Flat",
       "author": "Florian Heise",
@@ -423,6 +455,23 @@
       "file_link": "maps/m-south-america-mazim/m-south-america-mazim.mp",
       "preview_link": "maps/m-south-america-mazim/m-south-america-mazim_preview.png",
       "full_preview_link": "maps/m-south-america-mazim/m-south-america-mazim_full.png"
+    },
+    {
+      "id": "north-map",
+      "name": "North America",
+      "author": "Marla Singer",
+      "release_date": null,
+      "size": {
+        "width": 56,
+        "height": 70
+      },
+      "tags": [
+        "classic"
+      ],
+      "source_link": "http://forums.civfanatics.com/archive/index.php/f-29.html",
+      "file_link": "maps/north-map/north-map.zip",
+      "preview_link": "maps/north-map/north-map_preview.png",
+      "full_preview_link": "maps/north-map/north-map_full.png"
     },
     {
       "id": "orig13",
