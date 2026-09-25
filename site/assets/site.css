@@ -131,6 +131,7 @@ a.col-btn:where(:hover){color:var(--_fg)}
 .archive-map-grid[data-view=list] .archive-map-card{
   display:grid;
   grid-template-columns:minmax(150px,220px) minmax(0,1fr);
+  min-height:172px;
   max-width:none;
 }
 .archive-map-preview{
@@ -145,9 +146,8 @@ a.col-btn:where(:hover){color:var(--_fg)}
   border-bottom:1px solid var(--border);
 }
 .archive-map-grid[data-view=list] .archive-map-preview{
-  min-height:0;
-  height:100%;
-  min-height:148px;
+  min-height:172px;
+  height:172px;
   aspect-ratio:auto;
   border-right:1px solid var(--border);
   border-bottom:0;
@@ -175,6 +175,11 @@ a.col-btn:where(:hover){color:var(--_fg)}
 }
 .archive-map-preview:hover .col-art,
 .archive-map-preview:focus-visible .col-art{transform:scale(1.04)}
+.archive-map-grid[data-view=list] .archive-map-preview .col-art{
+  width:100%;
+  height:100%;
+  max-height:100%;
+}
 .archive-map-body{
   display:flex;
   flex:1;
