@@ -131,6 +131,7 @@ a.col-btn:where(:hover){color:var(--_fg)}
 .archive-map-grid[data-view=list] .archive-map-card{
   display:grid;
   grid-template-columns:minmax(150px,220px) minmax(0,1fr);
+  height:172px;
   min-height:172px;
   max-width:none;
 }
@@ -186,14 +187,20 @@ a.col-btn:where(:hover){color:var(--_fg)}
   flex-direction:column;
   padding:20px 22px;
 }
-.archive-map-grid[data-view=list] .archive-map-body{padding:16px 18px}
+.archive-map-grid[data-view=list] .archive-map-body{
+  min-height:0;
+  padding:16px 18px;
+}
 .archive-map-body h2{margin-top:0}
 .archive-map-author{margin:-4px 0 14px;color:var(--text-2);font-weight:600}
+.archive-map-grid[data-view=list] .archive-map-author{margin-bottom:10px}
 .archive-map-body .col-dl{grid-template-columns:auto minmax(0,1fr)}
 .archive-map-footer{margin-top:auto;padding-top:8px}
+.archive-map-grid[data-view=list] .archive-map-footer{margin-top:0;padding-top:0}
 .archive-map-actions{padding-top:0}
 .archive-action-icon{flex:0 0 auto}
 .archive-tags{margin:0 0 20px}
+.archive-map-grid[data-view=list] .archive-tags{margin-bottom:12px}
 .archive-tag{
   padding:2px 6px;
   font-size:.68rem;
@@ -220,7 +227,7 @@ a.col-btn:where(:hover){color:var(--_fg)}
   .archive-nav{order:3;width:100%}
   .archive-intro{padding-top:36px}
   .archive-map-preview{min-height:180px}
-  .archive-map-grid[data-view=list] .archive-map-card{display:flex}
+  .archive-map-grid[data-view=list] .archive-map-card{display:flex;height:auto}
   .archive-map-grid[data-view=list] .archive-map-preview{
     min-height:180px;
     aspect-ratio:16 / 10;
