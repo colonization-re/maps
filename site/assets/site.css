@@ -135,7 +135,10 @@ body.archive-background{
   max-height:360px;
   object-fit:contain;
   border:0;
+  transition:transform var(--t) var(--ease);
 }
+.archive-map-preview:hover .col-art,
+.archive-map-preview:focus-visible .col-art{transform:scale(1.04)}
 .archive-map-body{
   display:flex;
   flex:1;
