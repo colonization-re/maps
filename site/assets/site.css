@@ -147,7 +147,7 @@ body.archive-background{
 .archive-map-body .col-dl{grid-template-columns:auto minmax(0,1fr)}
 .archive-map-footer{margin-top:auto;padding-top:8px}
 .archive-map-actions{padding-top:0}
-.archive-action-icon{flex:0 0 auto;margin-left:6px}
+.archive-action-icon{flex:0 0 auto}
 .archive-tags{margin:0 0 20px}
 .archive-tag{
   padding:2px 6px;

@@ -43,9 +43,31 @@ EXTERNAL_ICON = (
     '</svg>'
 )
 
+DOWNLOAD_ICON = (
+    '<svg class="archive-action-icon" aria-hidden="true" viewBox="0 0 24 24" '
+    'width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>'
+    '<path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path>'
+    '</svg>'
+)
+
+DETAILS_ICON = (
+    '<svg class="archive-action-icon" aria-hidden="true" viewBox="0 0 24 24" '
+    'width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" '
+    'stroke-linecap="round" stroke-linejoin="round">'
+    '<circle cx="12" cy="12" r="10"></circle>'
+    '<path d="M12 16v-4"></path><path d="M12 8h.01"></path>'
+    '</svg>'
+)
+
 
 def external_label(label: str) -> str:
     return f"{label}{EXTERNAL_ICON}"
+
+
+def icon_label(icon: str, label: str) -> str:
+    return f"{icon}{label}"
 
 
 def map_card(entry: dict[str, Any]) -> str:
@@ -102,8 +124,8 @@ def map_card(entry: dict[str, Any]) -> str:
           <div class="col-row archive-tags" aria-label="Map tags">{tags}</div>
           <div class="archive-map-footer">
             <div class="col-btnrow archive-map-actions">
-              <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
-              <button class="col-btn col-btn--outline col-btn--sm" type="button" data-map-details-target="{modal_id}">Details</button>
+              <a class="col-btn col-btn--sm" href="{file_link}" download>{icon_label(DOWNLOAD_ICON, "Download")}</a>
+              <button class="col-btn col-btn--outline col-btn--sm" type="button" data-map-details-target="{modal_id}">{icon_label(DETAILS_ICON, "Details")}</button>
             </div>
           </div>
         </div>
@@ -125,7 +147,7 @@ def map_card(entry: dict[str, Any]) -> str:
           <div class="col-dialog-foot">
             {source_action}
             <a class="col-btn col-btn--outline col-btn--sm" href="{full_preview_link}" target="_blank" rel="noopener noreferrer">{external_label("Full image")}</a>
-            <a class="col-btn col-btn--sm" href="{file_link}" download>Download</a>
+            <a class="col-btn col-btn--sm" href="{file_link}" download>{icon_label(DOWNLOAD_ICON, "Download")}</a>
             <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-map-details-close>Close</button>
           </div>
         </dialog>
