@@ -209,6 +209,13 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
               <option value="size-desc">Map size</option>
             </select>
           </label>
+          <div class="col-field archive-view-field">
+            <span class="col-label">View</span>
+            <div class="col-segmented archive-view-toggle" role="group" aria-label="Catalog view">
+              <button type="button" data-map-view="gallery" aria-pressed="true">Gallery</button>
+              <button type="button" data-map-view="list" aria-pressed="false">List</button>
+            </div>
+          </div>
           <div class="col-row">
             <p class="col-meta archive-filter-status" data-filter-status aria-live="polite">{len(entries)} of {len(entries)} {map_word} shown</p>
             <button class="col-btn col-btn--ghost col-btn--sm" type="button" data-clear-filters disabled>Clear</button>

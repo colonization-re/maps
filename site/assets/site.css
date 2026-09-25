@@ -106,10 +106,17 @@ a.col-btn:where(:hover){color:var(--_fg)}
 .archive-tag-option:hover{background:var(--surface-2)}
 .archive-tag-option input{margin:0}
 .archive-sort-field{flex:0 1 180px;margin:0}
+.archive-view-field{flex:0 1 auto;margin:0}
+.archive-view-toggle button[aria-pressed=true]{background:var(--brand);color:var(--on-brand)}
 .archive-filter-status{margin:0}
 
 .archive-map-grid{
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+}
+.archive-map-grid[data-view=list]{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .archive-map-card{
@@ -121,6 +128,11 @@ a.col-btn:where(:hover){color:var(--_fg)}
   padding:0;
   overflow:hidden;
 }
+.archive-map-grid[data-view=list] .archive-map-card{
+  display:grid;
+  grid-template-columns:minmax(150px,220px) minmax(0,1fr);
+  max-width:none;
+}
 .archive-map-preview{
   position:relative;
   display:grid;
@@ -131,6 +143,14 @@ a.col-btn:where(:hover){color:var(--_fg)}
   overflow:hidden;
   background:var(--surface-2);
   border-bottom:1px solid var(--border);
+}
+.archive-map-grid[data-view=list] .archive-map-preview{
+  min-height:0;
+  height:100%;
+  min-height:148px;
+  aspect-ratio:auto;
+  border-right:1px solid var(--border);
+  border-bottom:0;
 }
 .archive-map-preview:hover{background:var(--surface-3)}
 .archive-map-size{
@@ -161,6 +181,7 @@ a.col-btn:where(:hover){color:var(--_fg)}
   flex-direction:column;
   padding:20px 22px;
 }
+.archive-map-grid[data-view=list] .archive-map-body{padding:16px 18px}
 .archive-map-body h2{margin-top:0}
 .archive-map-author{margin:-4px 0 14px;color:var(--text-2);font-weight:600}
 .archive-map-body .col-dl{grid-template-columns:auto minmax(0,1fr)}
@@ -194,6 +215,13 @@ a.col-btn:where(:hover){color:var(--_fg)}
   .archive-nav{order:3;width:100%}
   .archive-intro{padding-top:36px}
   .archive-map-preview{min-height:180px}
+  .archive-map-grid[data-view=list] .archive-map-card{display:flex}
+  .archive-map-grid[data-view=list] .archive-map-preview{
+    min-height:180px;
+    aspect-ratio:16 / 10;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
 }
 
 @media (prefers-color-scheme:dark){

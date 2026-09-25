@@ -14,6 +14,7 @@
   const status = document.querySelector("[data-filter-status]");
   const noResults = document.querySelector("[data-no-results]");
   const detailButtons = [...document.querySelectorAll("[data-map-details-target]")];
+  const viewButtons = [...document.querySelectorAll("[data-map-view]")];
   const normalize = (value) => value.toLowerCase().normalize("NFKD").replace(/\p{M}/gu, "");
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
@@ -72,6 +73,23 @@
     clear.disabled = selected.length === 0 && query.length === 0;
   }
 
+  function setView(view) {
+    const mode = view === "list" ? "list" : "gallery";
+    if (grid) {
+      grid.dataset.view = mode;
+    }
+    for (const button of viewButtons) {
+      const isActive = button.dataset.mapView === mode;
+      button.setAttribute("aria-pressed", String(isActive));
+      button.classList.toggle("is-active", isActive);
+    }
+    try {
+      localStorage.setItem("archive-map-view", mode);
+    } catch {
+      // Ignore storage failures; the view toggle still works for this page load.
+    }
+  }
+
   search?.addEventListener("input", updateResults);
   for (const option of tagOptions) {
     option.addEventListener("change", updateResults);
@@ -101,6 +119,11 @@
     }
   });
   sort?.addEventListener("change", updateSort);
+  for (const button of viewButtons) {
+    button.addEventListener("click", () => {
+      setView(button.dataset.mapView);
+    });
+  }
   for (const button of detailButtons) {
     button.addEventListener("click", () => {
       const dialog = document.getElementById(button.dataset.mapDetailsTarget || "");
@@ -130,5 +153,12 @@
     updateResults();
   });
   updateSort();
+  let savedView = "gallery";
+  try {
+    savedView = localStorage.getItem("archive-map-view") || "gallery";
+  } catch {
+    savedView = "gallery";
+  }
+  setView(savedView);
   updateResults();
 })();
