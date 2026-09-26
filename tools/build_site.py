@@ -304,6 +304,7 @@ def build(output: Path, local_css: Path | None = None) -> None:
     replacements = {
         "{{WEB_UI_VERSION}}": escaped(web_ui_version),
         "{{CATALOG_VERSION}}": escaped(catalog["catalog_version"]),
+        "{{EXTERNAL_ICON}}": EXTERNAL_ICON,
         "{{CATALOG_CONTENT}}": catalog_content(entries),
     }
     page = TEMPLATE_PATH.read_text(encoding="utf-8")
