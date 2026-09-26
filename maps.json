@@ -197,7 +197,7 @@
       },
       "tags": [
         "freecol",
-        "large"
+        "lg"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_America_JsTheDude.fsm",
       "file_link": "maps/l-america-js-the-dude/l-america-js-the-dude.mp",
@@ -215,7 +215,7 @@
       },
       "tags": [
         "freecol",
-        "large"
+        "lg"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_America_Mazim.fsm",
       "file_link": "maps/l-america-mazim/l-america-mazim.mp",
@@ -233,7 +233,7 @@
       },
       "tags": [
         "freecol",
-        "large"
+        "lg"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_Asia_Mazim.fsm",
       "file_link": "maps/l-asia-mazim/l-asia-mazim.mp",
@@ -251,7 +251,7 @@
       },
       "tags": [
         "freecol",
-        "large"
+        "lg"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_PacificSouth_Mazim.fsm",
       "file_link": "maps/l-pacific-south-mazim/l-pacific-south-mazim.mp",
@@ -269,7 +269,7 @@
       },
       "tags": [
         "freecol",
-        "large"
+        "lg"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/L_TheOldWorld_Mazim.fsm",
       "file_link": "maps/l-the-old-world-mazim/l-the-old-world-mazim.mp",
@@ -287,7 +287,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Africa_Gilolat.fsm",
       "file_link": "maps/m-africa-gilolat/m-africa-gilolat.mp",
@@ -305,7 +305,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Africa_Mazim.fsm",
       "file_link": "maps/m-africa-mazim/m-africa-mazim.mp",
@@ -323,7 +323,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_America_Mazim.fsm",
       "file_link": "maps/m-america-mazim/m-america-mazim.mp",
@@ -341,7 +341,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_AustraliaOceania_Mazim.fsm",
       "file_link": "maps/m-australia-oceania-mazim/m-australia-oceania-mazim.mp",
@@ -359,7 +359,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_CaribbeanIslands_Mazim.fsm",
       "file_link": "maps/m-caribbean-islands-mazim/m-caribbean-islands-mazim.mp",
@@ -377,7 +377,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Caribbean_Piotrus.fsm",
       "file_link": "maps/m-caribbean-piotrus/m-caribbean-piotrus.mp",
@@ -395,7 +395,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_Eurasia_Mazim.fsm",
       "file_link": "maps/m-eurasia-mazim/m-eurasia-mazim.mp",
@@ -413,7 +413,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_NorthAmerica2_Mazim.fsm",
       "file_link": "maps/m-north-america-2-mazim/m-north-america-2-mazim.mp",
@@ -431,7 +431,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_NorthAmerica_Mazim.fsm",
       "file_link": "maps/m-north-america-mazim/m-north-america-mazim.mp",
@@ -449,7 +449,7 @@
       },
       "tags": [
         "freecol",
-        "medium"
+        "md"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/M_SouthAmerica_Mazim.fsm",
       "file_link": "maps/m-south-america-mazim/m-south-america-mazim.mp",
@@ -501,7 +501,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_Arabias_Mazim.fsm",
       "file_link": "maps/s-arabias-mazim/s-arabias-mazim.mp",
@@ -519,7 +519,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_AustraliaOceania_Gilolat.fsm",
       "file_link": "maps/s-australia-oceania-gilolat/s-australia-oceania-gilolat.mp",
@@ -537,7 +537,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_Caribbean_Phil.fsm",
       "file_link": "maps/s-caribbean-phil/s-caribbean-phil.mp",
@@ -555,7 +555,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_FeudalJapan_Mazim.fsm",
       "file_link": "maps/s-feudal-japan-mazim/s-feudal-japan-mazim.mp",
@@ -573,7 +573,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_SouthEastAsia_Mazim.fsm",
       "file_link": "maps/s-south-east-asia-mazim/s-south-east-asia-mazim.mp",
@@ -591,7 +591,7 @@
       },
       "tags": [
         "freecol",
-        "small"
+        "sm"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/S_USA_Mazim.fsm",
       "file_link": "maps/s-usa-mazim/s-usa-mazim.mp",
@@ -608,8 +608,8 @@
         "height": 228
       },
       "tags": [
-        "extra-large",
-        "freecol"
+        "freecol",
+        "xl"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/XL_GigaEarth_Mazim.fsm",
       "file_link": "maps/xl-giga-earth-mazim/xl-giga-earth-mazim.mp",
@@ -626,8 +626,8 @@
         "height": 298
       },
       "tags": [
-        "extra-extra-large",
-        "freecol"
+        "freecol",
+        "xxl"
       ],
       "source_link": "https://github.com/FreeCol/freecol/blob/db87a4da4a18af61a622a3781455090670436247/data/maps/XXL_HugeWorld_Mazim.fsm",
       "file_link": "maps/xxl-huge-world-mazim/xxl-huge-world-mazim.mp",
