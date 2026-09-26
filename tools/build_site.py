@@ -107,9 +107,7 @@ def map_card(entry: dict[str, Any]) -> str:
         )
 
     tag_list = " ".join(entry["tags"])
-    search_text = " ".join(
-        [entry["id"], entry["name"], entry["author"], *entry["tags"]]
-    )
+    search_text = entry["name"]
     file_link = escaped(entry["file_link"])
     preview_link = escaped(entry["preview_link"])
     full_preview_link = escaped(entry["full_preview_link"])
@@ -187,7 +185,7 @@ def catalog_content(entries: list[dict[str, Any]]) -> str:
         <div class="col-spread">
           <label class="col-field archive-search-field">
             <span class="col-label">Search maps</span>
-            <input class="col-input" type="search" placeholder="Name, author, or tag" autocomplete="off" data-map-search>
+            <input class="col-input" type="search" placeholder="Map name" autocomplete="off" data-map-search>
           </label>
           <div class="col-field archive-tag-filter-field">
             <span class="col-label">Filter by tag</span>
